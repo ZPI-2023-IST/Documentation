@@ -6,7 +6,7 @@ Description
 =================
 
 Translator is a intermediary between game and reinforcement learning models. The 
-translator is a way to make game compatible with reinforcement learning models
+translator is a way to make game compatible with reinforcement learning models.
 
 =================
 Functionality
@@ -23,7 +23,7 @@ Functionality
 ==================================
 Structure of the Translator
 ==================================
-| Every translator needs to inherit the AbstractTranslator class and implement all the methods
+| Every translator needs to inherit the AbstractTranslator class and implement all the methods.
 
 The structure of AbstractTranslator is the following::
 
