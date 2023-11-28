@@ -1,0 +1,9 @@
+Translator Documentation
+===============================
+
+=================
+Description
+=================
+
+Translator is a intermediary between game and reinforcement learning models. The 
+translator is a way to make game compatible with reinforcement learning models.

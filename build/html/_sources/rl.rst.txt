@@ -8,117 +8,49 @@ Description
 Reinforcement Learning Framework is used to train various models on various games.
 The framework is built in such a way that minimal user input is required.
 
+=================
+Functionality
+=================
+
+#. Share endpoints that allows API and Frontend to connect 
+#. Collect game data from API
+#. Collect data about model training and testing and pass them to API and Frontend
+#. Pass list of all models with their parameters to Frontend
+
 ====================================================================
 Structure of the Reinforcement Learning Framework
 ====================================================================
 
 Framework consists of the following parts:
 
-1. algorithms - module containing reinforcement learning algorithms
-
-    a. modules - module containg neural networks implementation
-
-        1. SimpleNet - class implementing a simple neural network
-
-    b. Algorithm - abstract class containing methods that every algorithm must override
-    c. AlgorithmManager - class managing all the implemented algorithms
-    d. Config - class containing configuration for algorithms
-    e. learning_algorithms/simple_algorithms - examples of algorithm implementation
-
-2. api - module containing application runner and shared endpoints
-
-    a. endpoints - implementation of shared endpoints
-    b. main - method starting the Reinforcement Learning Framework
-    c. Runner - class responsible for running the Reinforcement Learning Framework
-
-3. logger - module containg logger functionalities
-
-    a. Logger - class containing logger functionalities
+#. algorithms - module containing reinforcement learning algorithms and neural networks implementation
+#. api - module containing application runner and shared endpoints
+#. logger - module containg logger functionalities
 
 --------------------------------------
-Algorithms Module
+Algorithms Module Structure
 --------------------------------------
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-modules
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Algorithms Module consists of the following parts:
 
-Module containing implementation of neural networks that could be later used to build reinforcement learning models. 
-Neural networks do not need to adhere to any rules.
-User can implement their own neural networks when needed
-
-""""""""""""""""""""""""""""""""""""""
-SimpleNet
-""""""""""""""""""""""""""""""""""""""
-
-Class implementing a multilayer perceptron with ReLU as activation function
-
-The structure of SimpleNet is the following::
-
-    import torch
-    import torch.nn as nn
-
-
-    class SimpleNet(nn.Module):
-        def __init__(self, layers: list[int]) -> None:
-            super().__init__()
-            self.layers = nn.ModuleList(
-                [nn.Linear(layers[i], layers[i + 1]) for i in range(len(layers) - 1)]
-            )
-            self.activation = nn.ReLU()
-
-        def forward(self, x: torch.Tensor) -> torch.Tensor:
-            for layer in self.layers:
-                x = layer(x)
-                x = self.activation(x)
-            return x
-
-""""""""""""""""""""""""""""""""""""""
-SimpleNet - Methods
-""""""""""""""""""""""""""""""""""""""
-
-**__init__**
-
-Initiate SimpleNet::
-
-    def __init__(self, layers: list[int]):
-        super().__init__()
-        self.layers = nn.ModuleList(
-            [nn.Linear(layers[i], layers[i + 1]) for i in range(len(layers) - 1)]
-        )
-        self.activation = nn.ReLU()
-
-| Input: list of the number of neurons in each hidden layer (length of the list is the number of hidden layers)
-| Output: None
-
-**forward**
-
-Forward propagate ::
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        for layer in self.layers:
-            x = layer(x)
-            x = self.activation(x)
-        return x
-
-| Input: input vector
-| Output: output vector
+#. Algorithm class
+#. modules module containing neural networks implementations
+#. AlgorithmManager class
+#. Config class
+#. States enum
+#. ParameterType enum
+#. Parameter tuple subclass
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Algorithm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The structure of Algorithm is the following::
+| Algorithm class delivers functions that every algorithm implemented in the framework must provide
+
+The structure of Algorithm class is the following::
 
     from abc import ABC, abstractmethod
-    from collections import namedtuple
-
     from rl.algorithms.Config import Config
-
-    Parameter = namedtuple(
-        "Parameter", ("type", "default", "min", "max", "help", "modifiable")
-    )
-
 
     class Algorithm(ABC):
         def __init__(self, logger) -> None:
@@ -154,21 +86,6 @@ The structure of Algorithm is the following::
 """"""""""""""""""""""""""""""""""""""
 Methods
 """"""""""""""""""""""""""""""""""""""
-
-**Parameter**
-
- Tuple subclass for defining model parameters::
-
-    Parameter = namedtuple(
-        "Parameter", ("type", "default", "min", "max", "help", "modifiable")
-    )
-
-| type - type of the parameter (types defined in ParameterType in Config)
-| default - default value of the parameter. Set to None if parameter doesn't have a default value
-| min - minimal value of the parameter. Set to None if parameter doesn't have minimal value
-| max - maximal value of the parameter. Set to None if parameter doesn't have maximal value
-| help - description of the parameter
-| modifiable - is parameter modifiable after training has started?
 
 **__init__**
 
@@ -229,7 +146,7 @@ Load model parameters ::
 
 **config_model**
 
-Configure model using given configuration ::
+Configure model using Config class ::
 
     def config_model(self, config: dict) -> None:
         self.config = Config.from_dict(config)
@@ -256,3 +173,59 @@ Update model configuration ::
 
 | Input: dictionary containing model configuration
 | Output: None
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+modules
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Module containing implementation of neural networks that could be later used to build reinforcement learning models. 
+| Neural networks do not need to adhere to any rules.
+| User can implement their own neural networks when needed
+
+""""""""""""""""""""""""""""""""""""""
+SimpleNet - example of neural network
+""""""""""""""""""""""""""""""""""""""
+
+Class implementing a multilayer perceptron with ReLU as activation function
+
+The structure of SimpleNet is the following::
+
+    import torch
+    import torch.nn as nn
+
+
+    class SimpleNet(nn.Module):
+        def __init__(self, layers: list[int]) -> None:
+            super().__init__()
+            self.layers = nn.ModuleList(
+                [nn.Linear(layers[i], layers[i + 1]) for i in range(len(layers) - 1)]
+            )
+            self.activation = nn.ReLU()
+
+        def forward(self, x: torch.Tensor) -> torch.Tensor:
+            for layer in self.layers:
+                x = layer(x)
+                x = self.activation(x)
+            return x
+
+| SimpleNet takes as an input the list of the number of nodes in the hidden layers
+| Than during forward method it performs a simple forward propagation
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ Tuple subclass for defining model parameters::
+
+    from collections import namedtuple
+
+    Parameter = namedtuple(
+        "Parameter", ("type", "default", "min", "max", "help", "modifiable")
+    )
+
+| type - type of the parameter (types defined in ParameterType in Config)
+| default - default value of the parameter. Set to None if parameter doesn't have a default value
+| min - minimal value of the parameter. Set to None if parameter doesn't have minimal value
+| max - maximal value of the parameter. Set to None if parameter doesn't have maximal value
+| help - description of the parameter
+| modifiable - is parameter modifiable after training has started?
