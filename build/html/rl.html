@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reinforcment Learning Framework Documentation &mdash; ZPI  documentation</title>
+  <title>Reinforcement Learning Framework Documentation &mdash; ZPI  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -43,8 +43,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="translator.html">Translator Documentation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Reinforcment Learning Framework Documentation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reinforcement Learning Framework Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure-of-the-reinforcement-learning-framework">Structure of the Reinforcement Learning Framework</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#algorithms-module">Algorithms Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modules">modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#algorithm">Algorithm</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -63,7 +71,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Reinforcment Learning Framework Documentation</li>
+      <li class="breadcrumb-item active">Reinforcement Learning Framework Documentation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/rl.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -73,12 +81,266 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="reinforcment-learning-framework-documentation">
-<h1>Reinforcment Learning Framework Documentation<a class="headerlink" href="#reinforcment-learning-framework-documentation" title="Link to this heading"></a></h1>
+  <section id="reinforcement-learning-framework-documentation">
+<h1>Reinforcement Learning Framework Documentation<a class="headerlink" href="#reinforcement-learning-framework-documentation" title="Link to this heading"></a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>Reinforcment Learning Framework is used to train various models on various games.
-The framework is built in such a way that minimal user input is required</p>
+<p>Reinforcement Learning Framework is used to train various models on various games.
+The framework is built in such a way that minimal user input is required.</p>
+</section>
+<section id="structure-of-the-reinforcement-learning-framework">
+<h2>Structure of the Reinforcement Learning Framework<a class="headerlink" href="#structure-of-the-reinforcement-learning-framework" title="Link to this heading"></a></h2>
+<p>Framework consists of the following parts:</p>
+<ol class="arabic">
+<li><p>algorithms - module containing reinforcement learning algorithms</p>
+<blockquote>
+<div><ol class="loweralpha">
+<li><p>modules - module containg neural networks implementation</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>SimpleNet - class implementing a simple neural network</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Algorithm - abstract class containing methods that every algorithm must override</p></li>
+<li><p>AlgorithmManager - class managing all the implemented algorithms</p></li>
+<li><p>Config - class containing configuration for algorithms</p></li>
+<li><p>learning_algorithms/simple_algorithms - examples of algorithm implementation</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>api - module containing application runner and shared endpoints</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>endpoints - implementation of shared endpoints</p></li>
+<li><p>main - method starting the Reinforcement Learning Framework</p></li>
+<li><p>Runner - class responsible for running the Reinforcement Learning Framework</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>logger - module containg logger functionalities</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Logger - class containing logger functionalities</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+<section id="algorithms-module">
+<h3>Algorithms Module<a class="headerlink" href="#algorithms-module" title="Link to this heading"></a></h3>
+<section id="modules">
+<h4>modules<a class="headerlink" href="#modules" title="Link to this heading"></a></h4>
+<p>Module containing implementation of neural networks that could be later used to build reinforcement learning models.
+Neural networks do not need to adhere to any rules.
+User can implement their own neural networks when needed</p>
+<section id="simplenet">
+<h5>SimpleNet<a class="headerlink" href="#simplenet" title="Link to this heading"></a></h5>
+<p>Class implementing a multilayer perceptron with ReLU as activation function</p>
+<p>The structure of SimpleNet is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+
+<span class="k">class</span> <span class="nc">SimpleNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">layers</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</section>
+<section id="simplenet-methods">
+<h5>SimpleNet - Methods<a class="headerlink" href="#simplenet-methods" title="Link to this heading"></a></h5>
+<p><strong>__init__</strong></p>
+<p>Initiate SimpleNet:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">layers</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: list of the number of neurons in each hidden layer (length of the list is the number of hidden layers)</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>forward</strong></p>
+<p>Forward propagate</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: input vector</div>
+<div class="line">Output: output vector</div>
+</div>
+</section>
+</section>
+<section id="algorithm">
+<h4>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading"></a></h4>
+<p>The structure of Algorithm is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+
+<span class="kn">from</span> <span class="nn">rl.algorithms.Config</span> <span class="kn">import</span> <span class="n">Config</span>
+
+<span class="n">Parameter</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s2">&quot;Parameter&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;modifiable&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Algorithm</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">reward</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">game_status</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_configurable_parameters</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">set_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">config_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">update_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="methods">
+<h5>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h5>
+<p><strong>Parameter</strong></p>
+<blockquote>
+<div><p>Tuple subclass for defining model parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Parameter</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s2">&quot;Parameter&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;modifiable&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">type - type of the parameter (types defined in ParameterType in Config)</div>
+<div class="line">default - default value of the parameter. Set to None if parameter doesn’t have a default value</div>
+<div class="line">min - minimal value of the parameter. Set to None if parameter doesn’t have minimal value</div>
+<div class="line">max - maximal value of the parameter. Set to None if parameter doesn’t have maximal value</div>
+<div class="line">help - description of the parameter</div>
+<div class="line">modifiable - is parameter modifiable after training has started?</div>
+</div>
+<p><strong>__init__</strong></p>
+<p>Initiate algorithm</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: logger used to log features</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>forward</strong></p>
+<p>Make one iteration of the model</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">reward</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: current state of the game, list of possible actions, reward for previous action</div>
+<div class="line">Output: the index of move chosen by the algorithm</div>
+</div>
+<p><strong>get_configurable_parameters</strong></p>
+<p>Get all model’s parameters</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@classmethod</span>
+<span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_configurable_parameters</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: List of all model’s parameters</div>
+</div>
+<p><strong>get_model</strong></p>
+<p>Get model data</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: TO DO</div>
+</div>
+<p><strong>set_params</strong></p>
+<p>Load model parameters</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">set_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: model parameters</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>config_model</strong></p>
+<p>Configure model using given configuration</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">config_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: dictionary containing documentation</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>restart</strong></p>
+<p>Restart defined model parameters</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>update_config</strong></p>
+<p>Update model configuration</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: dictionary containing model configuration</div>
+<div class="line">Output: None</div>
+</div>
+</section>
+</section>
+</section>
 </section>
 </section>
 
