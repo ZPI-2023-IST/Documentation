@@ -19,6 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reinforcment Learning Framework Documentation" href="rl.html" />
     <link rel="prev" title="Welcome to ZPI’s documentation!" href="index.html" /> 
 </head>
 
@@ -46,19 +47,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#functionality">Functionality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#structure-of-the-translator">Structure of the Translator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#init">__init__</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#make-move">make_move</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-moves">get_moves</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-board">get_board</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-state">get_state</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#start-game">start_game</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-reward">get_reward</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-config-model">get_config_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="rl.html">Reinforcment Learning Framework Documentation</a></li>
 </ul>
 
         </div>
@@ -148,8 +140,7 @@ translator is a way to make game compatible with reinforcement learning models.<
 </section>
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
-<section id="init">
-<h3>__init__<a class="headerlink" href="#init" title="Link to this heading"></a></h3>
+<p><strong>__init__</strong></p>
 <p>Initiate translator:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">game</span> <span class="o">=</span> <span class="n">game</span>
@@ -159,9 +150,7 @@ translator is a way to make game compatible with reinforcement learning models.<
 <div class="line">Input: game that is processed by translator</div>
 <div class="line">Output: None</div>
 </div>
-</section>
-<section id="make-move">
-<h3>make_move<a class="headerlink" href="#make-move" title="Link to this heading"></a></h3>
+<p><strong>make_move</strong></p>
 <p>Make move in the game:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -171,9 +160,7 @@ translator is a way to make game compatible with reinforcement learning models.<
 <div class="line">Input: move made by the reinforcement learning model</div>
 <div class="line">Output: None</div>
 </div>
-</section>
-<section id="get-moves">
-<h3>get_moves<a class="headerlink" href="#get-moves" title="Link to this heading"></a></h3>
+<p><strong>get_moves</strong></p>
 <p>Get moves from the game:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -183,9 +170,7 @@ translator is a way to make game compatible with reinforcement learning models.<
 <div class="line">Input: None</div>
 <div class="line">Output: move representation needed by reinforcement learning model</div>
 </div>
-</section>
-<section id="get-board">
-<h3>get_board<a class="headerlink" href="#get-board" title="Link to this heading"></a></h3>
+<p><strong>get_board</strong></p>
 <p>Get board from the game:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_board</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -195,9 +180,7 @@ translator is a way to make game compatible with reinforcement learning models.<
 <div class="line">Input: None</div>
 <div class="line">Output: board representation needed by reinforcement learning model</div>
 </div>
-</section>
-<section id="get-state">
-<h3>get_state<a class="headerlink" href="#get-state" title="Link to this heading"></a></h3>
+<p><strong>get_state</strong></p>
 <p>Get state from the game:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -207,9 +190,7 @@ translator is a way to make game compatible with reinforcement learning models.<
 <div class="line">Input: None</div>
 <div class="line">Output: state representation needed by reinforcement learning model</div>
 </div>
-</section>
-<section id="start-game">
-<h3>start_game<a class="headerlink" href="#start-game" title="Link to this heading"></a></h3>
+<p><strong>start_game</strong></p>
 <p>Start the game:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">start_game</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -219,9 +200,7 @@ translator is a way to make game compatible with reinforcement learning models.<
 <div class="line">Input: None</div>
 <div class="line">Output: None</div>
 </div>
-</section>
-<section id="get-reward">
-<h3>get_reward<a class="headerlink" href="#get-reward" title="Link to this heading"></a></h3>
+<p><strong>get_reward</strong></p>
 <p>Calculate reward that will be later used by reinforcement learning models:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_reward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -231,9 +210,7 @@ translator is a way to make game compatible with reinforcement learning models.<
 <div class="line">Input: None</div>
 <div class="line">Output: reward for the reinforcement learning models</div>
 </div>
-</section>
-<section id="get-config-model">
-<h3>get_config_model<a class="headerlink" href="#get-config-model" title="Link to this heading"></a></h3>
+<p><strong>get_config_model</strong></p>
 <p>Get parameters that could be helpful when setting up the reinforcement learning model (e.g. input size, output size):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_config_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -245,13 +222,13 @@ translator is a way to make game compatible with reinforcement learning models.<
 </div>
 </section>
 </section>
-</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to ZPI’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rl.html" class="btn btn-neutral float-right" title="Reinforcment Learning Framework Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

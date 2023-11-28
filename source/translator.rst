@@ -65,9 +65,7 @@ The structure of AbstractTranslator is the following::
 Methods
 ==================================
 
----------------------------------
-__init__
----------------------------------
+**__init__**
 
 Initiate translator::
 
@@ -77,9 +75,7 @@ Initiate translator::
 | Input: game that is processed by translator
 | Output: None
 
----------------------------------
-make_move
----------------------------------
+**make_move**
 
 Make move in the game::
 
@@ -89,9 +85,7 @@ Make move in the game::
 | Input: move made by the reinforcement learning model
 | Output: None
 
----------------------------------
-get_moves
----------------------------------
+**get_moves**
 
 Get moves from the game::
 
@@ -101,9 +95,7 @@ Get moves from the game::
 | Input: None
 | Output: move representation needed by reinforcement learning model
 
----------------------------------
-get_board
----------------------------------
+**get_board**
 
 Get board from the game::
 
@@ -113,9 +105,7 @@ Get board from the game::
 | Input: None
 | Output: board representation needed by reinforcement learning model
 
----------------------------------
-get_state
----------------------------------
+**get_state**
 
 Get state from the game::
 
@@ -125,9 +115,7 @@ Get state from the game::
 | Input: None
 | Output: state representation needed by reinforcement learning model
 
----------------------------------
-start_game
----------------------------------
+**start_game**
 
 Start the game::
 
@@ -137,9 +125,7 @@ Start the game::
 | Input: None
 | Output: None
 
----------------------------------
-get_reward
----------------------------------
+**get_reward**
 
 Calculate reward that will be later used by reinforcement learning models::
 
@@ -149,9 +135,7 @@ Calculate reward that will be later used by reinforcement learning models::
 | Input: None
 | Output: reward for the reinforcement learning models
 
----------------------------------
-get_config_model
----------------------------------
+**get_config_model**
 
 Get parameters that could be helpful when setting up the reinforcement learning model (e.g. input size, output size)::
 
