@@ -51,6 +51,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#algorithm">Algorithm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#modules">modules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#algorithmmanager">AlgorithmManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config">Config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#parameter">Parameter</a></li>
 </ul>
 </li>
@@ -167,8 +168,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p><strong>__init__</strong></p>
 <p>Initiate algorithm</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -179,7 +178,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p>Make one iteration of the model</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">reward</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="k">pass</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -191,7 +189,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@classmethod</span>
 <span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">get_configurable_parameters</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="k">pass</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -202,7 +199,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p>Get model data</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
-    <span class="k">pass</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -213,7 +209,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p>Load model parameters</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">set_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">pass</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -223,7 +218,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p><strong>config_model</strong></p>
 <p>Configure model using Config class</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">config_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -233,7 +227,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p><strong>restart</strong></p>
 <p>Restart defined model parameters</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">pass</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -243,7 +236,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p><strong>update_config</strong></p>
 <p>Update model configuration</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -290,72 +282,14 @@ The framework is built in such a way that minimal user input is required.</p>
 </section>
 <section id="algorithmmanager">
 <h4>AlgorithmManager<a class="headerlink" href="#algorithmmanager" title="Link to this heading"></a></h4>
-<div class="line-block">
-<div class="line">AlgorithmManager class handles all implemented algorithms. It registers all the implemented algorithms thus providing access to them to users. It also handles all operations related to setting up algorithms.</div>
-</div>
-<p>The structure of AlgorithmManager class is the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rl.logger.Logger</span> <span class="kn">import</span> <span class="n">LogType</span>
-
-<span class="k">class</span> <span class="nc">AlgorithmManager</span><span class="p">:</span>
-    <span class="n">DEFAULT_ALGORITHM</span> <span class="o">=</span> <span class="s2">&quot;random&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">algorithm_name</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">registered_algorithms</span> <span class="o">=</span> <span class="p">{}</span>
-
-    <span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_default_algorithm</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">set_default_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_ALGORITHM</span><span class="p">)</span>
-        <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">get_configurable_parameters</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">configure_algorithm</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">set_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">algorithm_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">algorithm_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">registered_algorithms</span><span class="p">[</span><span class="n">algorithm_name</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">=</span> <span class="n">algorithm_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">algorithm_name</span> <span class="o">=</span> <span class="n">algorithm_name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Setting algorithm to </span><span class="si">{</span><span class="n">algorithm_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="n">LogType</span><span class="o">.</span><span class="n">CONFIG</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">configure_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">config_model</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;New config: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="n">LogType</span><span class="o">.</span><span class="n">CONFIG</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">update_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">update_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Updated config: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="n">LogType</span><span class="o">.</span><span class="n">CONFIG</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">register_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">registered_algorithms</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span>
-            <span class="k">return</span> <span class="bp">cls</span>
-
-        <span class="k">return</span> <span class="n">decorator</span>
-</pre></div>
-</div>
+<p>AlgorithmManager class handles all implemented algorithms.
+It registers all the implemented algorithms thus providing access to them to users.
+It also handles all operations related to setting up algorithms.</p>
 <section id="id1">
 <h5>Methods<a class="headerlink" href="#id1" title="Link to this heading"></a></h5>
 <p><strong>__init__</strong></p>
 <p>Initiate algorithm manager</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">algorithm_name</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">registered_algorithms</span> <span class="o">=</span> <span class="p">{}</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -365,8 +299,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p><strong>mount</strong></p>
 <p>Mount algorithm manager</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">set_default_algorithm</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -376,11 +308,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p><strong>set_default_algorithm</strong></p>
 <p>Set default algorithm defined in the algorithm manager and configure it using default parameters</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_default_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">set_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_ALGORITHM</span><span class="p">)</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">get_configurable_parameters</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-    <span class="p">}</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">configure_algorithm</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -390,13 +317,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p><strong>set_algorithm</strong></p>
 <p>Set algorithm and configure it using default parameters. Log changes</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">algorithm_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">algorithm_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">registered_algorithms</span><span class="p">[</span><span class="n">algorithm_name</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">=</span> <span class="n">algorithm_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">algorithm_name</span> <span class="o">=</span> <span class="n">algorithm_name</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Setting algorithm to </span><span class="si">{</span><span class="n">algorithm_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="n">LogType</span><span class="o">.</span><span class="n">CONFIG</span><span class="p">,</span>
-    <span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -406,11 +326,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p><strong>configure_algorithm</strong></p>
 <p>Configure currently used algorithm. Log changes</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">configure_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">config_model</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;New config: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="n">LogType</span><span class="o">.</span><span class="n">CONFIG</span><span class="p">,</span>
-    <span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -420,11 +335,6 @@ The framework is built in such a way that minimal user input is required.</p>
 <p><strong>update_config</strong></p>
 <p>Update currently used algorithm. Log changes</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">update_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Updated config: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="n">LogType</span><span class="o">.</span><span class="n">CONFIG</span><span class="p">,</span>
-    <span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -434,15 +344,46 @@ The framework is built in such a way that minimal user input is required.</p>
 <p><strong>register_algorithm</strong></p>
 <p>Register the algorithm. Every implemented algorithm needs to be registered with the usage of register_algorithm decorator</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">register_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">registered_algorithms</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span>
-        <span class="k">return</span> <span class="bp">cls</span>
-
-    <span class="k">return</span> <span class="n">decorator</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line">Input: name of the algorithm</div>
+<div class="line">Output: None</div>
+</div>
+</section>
+</section>
+<section id="config">
+<h4>Config<a class="headerlink" href="#config" title="Link to this heading"></a></h4>
+<p>Config class stores configuration of the algorithms. Every algorithm uses config to access theirs parameters</p>
+<section id="id2">
+<h5>Methods<a class="headerlink" href="#id2" title="Link to this heading"></a></h5>
+<p><strong>from_dict</strong></p>
+<p>Create config from dictionary</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: dictionary with configuration</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>as_dict</strong></p>
+<p>Get configuration as dictionary</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">as_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: dictionary with configuration</div>
+</div>
+<p><strong>update</strong></p>
+<p>Update configuration</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: dictionary with configuration</div>
 <div class="line">Output: None</div>
 </div>
 </section>

@@ -70,7 +70,6 @@ Methods
 Initiate translator::
 
     def __init__(self, game=None):
-        self.game = game
 
 | Input: game that is processed by translator
 | Output: None
@@ -80,7 +79,6 @@ Initiate translator::
 Make move in the game::
 
     def make_move(self, move):
-        pass
 
 | Input: move made by the reinforcement learning model
 | Output: None
@@ -90,7 +88,6 @@ Make move in the game::
 Get moves from the game::
 
     def get_moves(self):
-        pass
 
 | Input: None
 | Output: move representation needed by reinforcement learning model
@@ -100,7 +97,6 @@ Get moves from the game::
 Get board from the game::
 
     def get_board(self):
-        pass
 
 | Input: None
 | Output: board representation needed by reinforcement learning model
@@ -110,7 +106,6 @@ Get board from the game::
 Get state from the game::
 
     def get_state(self):
-        pass
 
 | Input: None
 | Output: state representation needed by reinforcement learning model
@@ -120,7 +115,6 @@ Get state from the game::
 Start the game::
 
     def start_game(self):
-        pass
 
 | Input: None
 | Output: None
@@ -130,7 +124,6 @@ Start the game::
 Calculate reward that will be later used by reinforcement learning models::
 
     def get_reward(self):
-        pass
 
 | Input: None
 | Output: reward for the reinforcement learning models
@@ -140,7 +133,6 @@ Calculate reward that will be later used by reinforcement learning models::
 Get parameters that could be helpful when setting up the reinforcement learning model (e.g. input size, output size)::
 
     def get_config_model(self):
-        pass
 
 | Input: None
 | Output: useful parameters when setting up the reinforcement learning model

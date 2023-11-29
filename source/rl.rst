@@ -93,8 +93,6 @@ Methods
 Initiate algorithm ::
 
     def __init__(self, logger) -> None:
-        self.logger = logger
-        self.config = None
 
 | Input: logger used to log features
 | Output: None
@@ -105,7 +103,6 @@ Make one iteration of the model ::
 
     @abstractmethod
     def forward(self, state: list, actions: list, reward: float) -> int:
-        pass
 
 | Input: current state of the game, list of possible actions, reward for previous action
 | Output: the index of move chosen by the algorithm
@@ -117,7 +114,6 @@ Get all model's parameters ::
     @classmethod
     @abstractmethod
     def get_configurable_parameters(cls) -> dict:
-        pass
 
 | Input: None
 | Output: List of all model's parameters
@@ -128,7 +124,6 @@ Get model data ::
 
     @abstractmethod
     def get_model(self) -> object:
-        pass
 
 
 | Input: None
@@ -140,7 +135,6 @@ Load model parameters ::
 
     @abstractmethod
     def set_params(self, params) -> None:
-        pass
 
 | Input: model parameters
 | Output: None
@@ -150,7 +144,6 @@ Load model parameters ::
 Configure model using Config class ::
 
     def config_model(self, config: dict) -> None:
-        self.config = Config.from_dict(config)
 
 | Input: dictionary containing documentation
 | Output: None
@@ -160,7 +153,6 @@ Configure model using Config class ::
 Restart defined model parameters ::
 
     def restart(self) -> None:
-        pass
 
 | Input: None
 | Output: None
@@ -170,7 +162,6 @@ Restart defined model parameters ::
 Update model configuration ::
 
     def update_config(self, config: dict) -> None:
-        self.config.update(config)
 
 | Input: dictionary containing model configuration
 | Output: None
@@ -216,61 +207,9 @@ The structure of SimpleNet is the following::
 AlgorithmManager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| AlgorithmManager class handles all implemented algorithms. It registers all the implemented algorithms thus providing access to them to users. It also handles all operations related to setting up algorithms.
-
-The structure of AlgorithmManager class is the following::
-
-    from rl.logger.Logger import LogType
-
-    class AlgorithmManager:
-        DEFAULT_ALGORITHM = "random"
-
-        def __init__(self) -> None:
-            self.algorithm = None
-            self.algorithm_name = None
-            self.logger = None
-            self.registered_algorithms = {}
-
-        def mount(self, logger) -> None:
-            self.logger = logger
-            self.set_default_algorithm()
-
-        def set_default_algorithm(self) -> None:
-            self.set_algorithm(self.DEFAULT_ALGORITHM)
-            config = {
-                k: v[1] for k, v in self.algorithm.get_configurable_parameters().items()
-            }
-            self.configure_algorithm(config)
-
-        def set_algorithm(self, algorithm_name: str, *args, **kwargs) -> None:
-            algorithm_class = self.registered_algorithms[algorithm_name]
-            self.algorithm = algorithm_class(self.logger, *args, **kwargs)
-            self.algorithm_name = algorithm_name
-            self.logger.info(
-                f"Setting algorithm to {algorithm_name}",
-                LogType.CONFIG,
-            )
-
-        def configure_algorithm(self, config: dict) -> None:
-            self.algorithm.config_model(config)
-            self.logger.info(
-                f"New config: {self.algorithm.config.as_dict()}",
-                LogType.CONFIG,
-            )
-
-        def update_config(self, config: dict) -> None:
-            self.algorithm.update_config(config)
-            self.logger.info(
-                f"Updated config: {self.algorithm.config.as_dict()}",
-                LogType.CONFIG,
-            )
-
-        def register_algorithm(self, name: str):
-            def decorator(cls):
-                self.registered_algorithms[name] = cls
-                return cls
-
-            return decorator
+AlgorithmManager class handles all implemented algorithms. 
+It registers all the implemented algorithms thus providing access to them to users. 
+It also handles all operations related to setting up algorithms.
 
 """"""""""""""""""""""""""""""""""""""
 Methods
@@ -281,10 +220,6 @@ Methods
 Initiate algorithm manager ::
 
     def __init__(self) -> None:
-        self.algorithm = None
-        self.algorithm_name = None
-        self.logger = None
-        self.registered_algorithms = {}
 
 | Input: None
 | Output: None
@@ -294,8 +229,6 @@ Initiate algorithm manager ::
 Mount algorithm manager ::
 
     def mount(self, logger) -> None:
-        self.logger = logger
-        self.set_default_algorithm()
 
 | Input: logger used to log messages
 | Output: None
@@ -305,11 +238,6 @@ Mount algorithm manager ::
 Set default algorithm defined in the algorithm manager and configure it using default parameters ::
 
     def set_default_algorithm(self) -> None:
-        self.set_algorithm(self.DEFAULT_ALGORITHM)
-        config = {
-            k: v[1] for k, v in self.algorithm.get_configurable_parameters().items()
-        }
-        self.configure_algorithm(config)
 
 | Input: None
 | Output: None
@@ -319,13 +247,6 @@ Set default algorithm defined in the algorithm manager and configure it using de
 Set algorithm and configure it using default parameters. Log changes ::
 
     def set_algorithm(self, algorithm_name: str, *args, **kwargs) -> None:
-        algorithm_class = self.registered_algorithms[algorithm_name]
-        self.algorithm = algorithm_class(self.logger, *args, **kwargs)
-        self.algorithm_name = algorithm_name
-        self.logger.info(
-            f"Setting algorithm to {algorithm_name}",
-            LogType.CONFIG,
-        )
 
 | Input: name of the algorithm
 | Output: None
@@ -335,11 +256,6 @@ Set algorithm and configure it using default parameters. Log changes ::
 Configure currently used algorithm. Log changes ::
 
     def configure_algorithm(self, config: dict) -> None:
-        self.algorithm.config_model(config)
-        self.logger.info(
-            f"New config: {self.algorithm.config.as_dict()}",
-            LogType.CONFIG,
-        )
 
 | Input: new configuration for currently used algorithm
 | Output: None
@@ -349,11 +265,6 @@ Configure currently used algorithm. Log changes ::
 Update currently used algorithm. Log changes  ::
 
     def update_config(self, config: dict) -> None:
-        self.algorithm.update_config(config)
-        self.logger.info(
-            f"Updated config: {self.algorithm.config.as_dict()}",
-            LogType.CONFIG,
-        )
 
 | Input: new configuration for currently used algorithm
 | Output: None
@@ -363,13 +274,47 @@ Update currently used algorithm. Log changes  ::
 Register the algorithm. Every implemented algorithm needs to be registered with the usage of register_algorithm decorator ::
 
     def register_algorithm(self, name: str):
-        def decorator(cls):
-            self.registered_algorithms[name] = cls
-            return cls
-
-        return decorator
 
 | Input: name of the algorithm
+| Output: None
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Config
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Config class stores configuration of the algorithms. Every algorithm uses config to access theirs parameters
+
+""""""""""""""""""""""""""""""""""""""
+Methods
+""""""""""""""""""""""""""""""""""""""
+
+**from_dict**
+
+Create config from dictionary ::
+
+    @staticmethod
+    def from_dict(config: dict) -> None:
+
+| Input: dictionary with configuration
+| Output: None
+
+**as_dict**
+
+Get configuration as dictionary ::
+
+    def as_dict(self) -> dict:
+
+| Input: None
+| Output: dictionary with configuration
+
+**update**
+
+Update configuration ::
+
+    @staticmethod
+    def update(self, config: dict) -> None:
+
+| Input: dictionary with configuration
 | Output: None
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
