@@ -539,3 +539,87 @@ Enum defining the current state of the game ::
         ONGOING = auto()
         WON = auto()
         LOST = auto()
+
+--------------------------------------
+Logger Module Structure
+--------------------------------------
+
+Logger Module consists of the following parts:
+
+#. Logger class
+#. LogLevel enum
+#. LogType enum
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Logger
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Logger class is used to log operations made within the framework
+
+""""""""""""""""""""""""""""""""""""""
+Methods
+""""""""""""""""""""""""""""""""""""""
+
+**__init__**
+
+Initiate logger ::
+
+    def __init__(self) -> None:
+
+| Input: None
+| Output: None
+
+**log**
+
+Print log message and save it in messages ::
+
+    def log(self, message: str, log_level: LogLevel, log_type: LogType) -> None:
+
+| Input: message, log level, log type
+| Output: None
+
+**info**
+
+Log message of into type  ::
+
+    def info(self, message: str, log_type: LogType) -> None:
+
+| Input: message, log type
+| Output: None
+
+**get_messages**
+
+Get all logged messages ::
+
+    def get_messages(self, filter: str = None) -> list:
+
+| Input: condition on which messages will be filtered. If None than no filter is applied
+| Output: list of all the messages
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+LogLevel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Enum defining level of the message ::
+
+    from enum import Enum, auto
+
+    class LogLevel(Enum):
+        DEBUG = auto()
+        INFO = auto()
+        WARNING = auto()
+        ERROR = auto()
+        FATAL = auto()
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+LogType
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Enum defining the type of the message ::
+
+    from enum import Enum, auto
+
+    class LogType(Enum):
+        CONFIG = auto()
+        TRAIN = auto()
+        TEST = auto()

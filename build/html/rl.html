@@ -65,6 +65,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#gamestate">GameState</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#logger-module-structure">Logger Module Structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#logger">Logger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loglevel">LogLevel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logtype">LogType</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -606,6 +612,84 @@ You need to start the server if you want to use the framework</p>
     <span class="n">ONGOING</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">WON</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">LOST</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="logger-module-structure">
+<h3>Logger Module Structure<a class="headerlink" href="#logger-module-structure" title="Link to this heading"></a></h3>
+<p>Logger Module consists of the following parts:</p>
+<ol class="arabic simple">
+<li><p>Logger class</p></li>
+<li><p>LogLevel enum</p></li>
+<li><p>LogType enum</p></li>
+</ol>
+<section id="logger">
+<h4>Logger<a class="headerlink" href="#logger" title="Link to this heading"></a></h4>
+<p>Logger class is used to log operations made within the framework</p>
+<section id="id5">
+<h5>Methods<a class="headerlink" href="#id5" title="Link to this heading"></a></h5>
+<p><strong>__init__</strong></p>
+<p>Initiate logger</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>log</strong></p>
+<p>Print log message and save it in messages</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_level</span><span class="p">:</span> <span class="n">LogLevel</span><span class="p">,</span> <span class="n">log_type</span><span class="p">:</span> <span class="n">LogType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: message, log level, log type</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>info</strong></p>
+<p>Log message of into type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_type</span><span class="p">:</span> <span class="n">LogType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: message, log type</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>get_messages</strong></p>
+<p>Get all logged messages</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: condition on which messages will be filtered. If None than no filter is applied</div>
+<div class="line">Output: list of all the messages</div>
+</div>
+</section>
+</section>
+<section id="loglevel">
+<h4>LogLevel<a class="headerlink" href="#loglevel" title="Link to this heading"></a></h4>
+<p>Enum defining level of the message</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">auto</span>
+
+<span class="k">class</span> <span class="nc">LogLevel</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">DEBUG</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">INFO</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">WARNING</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">ERROR</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">FATAL</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="logtype">
+<h4>LogType<a class="headerlink" href="#logtype" title="Link to this heading"></a></h4>
+<p>Enum defining the type of the message</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">auto</span>
+
+<span class="k">class</span> <span class="nc">LogType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">CONFIG</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">TRAIN</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">TEST</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
