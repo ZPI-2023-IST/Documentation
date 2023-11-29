@@ -141,7 +141,7 @@ Load model parameters ::
 
 **config_model**
 
-Configure model using Config class ::
+Create model configuration using Config class ::
 
     def config_model(self, config: dict) -> None:
 
@@ -253,7 +253,7 @@ Set algorithm and configure it using default parameters. Log changes ::
 
 **configure_algorithm**
 
-Configure currently used algorithm. Log changes ::
+Create new configuration for currently used algorithm. Log changes ::
 
     def configure_algorithm(self, config: dict) -> None:
 
@@ -262,7 +262,7 @@ Configure currently used algorithm. Log changes ::
 
 **update_config**
 
-Update currently used algorithm. Log changes  ::
+Update configuration of the currently used algorithm. Log changes  ::
 
     def update_config(self, config: dict) -> None:
 
@@ -290,7 +290,7 @@ Methods
 
 **from_dict**
 
-Create config from dictionary ::
+Create new configuration from dictionary ::
 
     @staticmethod
     def from_dict(config: dict) -> None:
@@ -361,3 +361,181 @@ Tuple subclass for defining model parameters::
 | max - maximal value of the parameter. Set to None if parameter doesn't have maximal value
 | help - description of the parameter
 | modifiable - is parameter modifiable after training has started?
+
+--------------------------------------
+API Module Structure
+--------------------------------------
+
+Algorithms Module consists of the following parts:
+
+#. main
+#. endpoints
+#. Runner class
+#. GameResults class
+#. GameState enum
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+main
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+main file is used to start the reinforcement learning framework server. 
+You need to start the server if you want to use the framework
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| We share multiple endpoints that allow to use reinforcement learning framework methods
+| To use them you need to use HTTP methods: GET, POST, PUT
+
+**/logs**
+
+| GET - get logs from the server
+
+**/run**
+
+| GET - get current runner state
+| POST - start/stop runner
+
+**/model**
+
+| GET - return model in zip format
+| PUT - import model from the file
+
+**/config**
+
+| GET - get current model configuration
+| PUT - update model configuration
+| POST - create new model configuration
+
+**/config-params**
+
+| GET - get all model parameters (you can choose if you want modifiable parameters or all parameters)
+
+**/game-history**
+
+| GET - return game history
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Runner
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Runner class is an intermediary between algorithms module, API and Frontend
+
+""""""""""""""""""""""""""""""""""""""
+Methods
+""""""""""""""""""""""""""""""""""""""
+
+**__init__**
+
+Initiate runner ::
+
+    def __init__(self, logger: Logger, algorithm_manager: AlgorithmManager, max_game_len=100, config="config.json") -> None:
+
+| Input: logger, algorithm manager, maximal amount of moves that the model can make in one iteration of the game, configuration file for connecting with API
+| Output: None
+
+**_mount_socketio**
+
+Initiate connection to API ::
+
+    def _mount_socketio(self) -> None:
+
+| Input: None
+| Output: None
+
+**time**
+
+Get the running time of runner ::
+
+    @property
+    def time(self) -> float:
+
+| Input: None
+| Output: None
+
+**run**
+
+Run the runner until end condition is met, user stops the process or the connection gets lost ::
+
+    def run(self) -> None:
+
+| Input: None
+| Output: None
+
+**start**
+
+Start the runner ::
+
+    def start(self) -> None:
+
+| Input: None
+| Output: None
+
+**stop**
+
+Stop the runner ::
+
+    def stop(self) -> None:
+
+| Input: None
+| Output: None
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+GameResults
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+GameResults class stores model training/testing results
+
+""""""""""""""""""""""""""""""""""""""
+Methods
+""""""""""""""""""""""""""""""""""""""
+
+**__init__**
+
+Initiate GameResults class. Set all statistics to 0 ::
+
+    def __init__(self) -> None:
+
+| Input: None
+| Output: None
+
+**store_game_results**
+
+Store game results from one iteration ::
+
+    def store_game_results(self, reward, game_status, is_end_game):
+
+| Input: reward from the current game, game status (won, lost, ongoing), is game finished
+| Output: None
+
+**__str__**
+
+Get train/test statistics as string ::
+
+    def __str__(self) -> str:
+
+| Input: None
+| Output: train/test statistics as string
+
+**get_results**
+
+Get train/test statistics as dictionary ::
+
+    def get_results(self):
+
+| Input: None
+| Output: train/test statistics as dictionary
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+GameState
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Enum defining the current state of the game ::
+
+    from enum import Enum, auto
+
+    class GameStates(Enum):
+        ONGOING = auto()
+        WON = auto()
+        LOST = auto()

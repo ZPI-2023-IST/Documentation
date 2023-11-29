@@ -57,6 +57,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#parameter">Parameter</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#api-module-structure">API Module Structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#main">main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#endpoints">Endpoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#runner">Runner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gameresults">GameResults</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gamestate">GameState</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -218,7 +226,7 @@ The framework is built in such a way that minimal user input is required.</p>
 <div class="line">Output: None</div>
 </div>
 <p><strong>config_model</strong></p>
-<p>Configure model using Config class</p>
+<p>Create model configuration using Config class</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">config_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </pre></div>
 </div>
@@ -326,7 +334,7 @@ It also handles all operations related to setting up algorithms.</p>
 <div class="line">Output: None</div>
 </div>
 <p><strong>configure_algorithm</strong></p>
-<p>Configure currently used algorithm. Log changes</p>
+<p>Create new configuration for currently used algorithm. Log changes</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">configure_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </pre></div>
 </div>
@@ -335,7 +343,7 @@ It also handles all operations related to setting up algorithms.</p>
 <div class="line">Output: None</div>
 </div>
 <p><strong>update_config</strong></p>
-<p>Update currently used algorithm. Log changes</p>
+<p>Update configuration of the currently used algorithm. Log changes</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </pre></div>
 </div>
@@ -360,7 +368,7 @@ It also handles all operations related to setting up algorithms.</p>
 <section id="id2">
 <h5>Methods<a class="headerlink" href="#id2" title="Link to this heading"></a></h5>
 <p><strong>from_dict</strong></p>
-<p>Create config from dictionary</p>
+<p>Create new configuration from dictionary</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </pre></div>
@@ -431,6 +439,174 @@ It also handles all operations related to setting up algorithms.</p>
 <div class="line">max - maximal value of the parameter. Set to None if parameter doesn’t have maximal value</div>
 <div class="line">help - description of the parameter</div>
 <div class="line">modifiable - is parameter modifiable after training has started?</div>
+</div>
+</section>
+</section>
+<section id="api-module-structure">
+<h3>API Module Structure<a class="headerlink" href="#api-module-structure" title="Link to this heading"></a></h3>
+<p>Algorithms Module consists of the following parts:</p>
+<ol class="arabic simple">
+<li><p>main</p></li>
+<li><p>endpoints</p></li>
+<li><p>Runner class</p></li>
+<li><p>GameResults class</p></li>
+<li><p>GameState enum</p></li>
+</ol>
+<section id="main">
+<h4>main<a class="headerlink" href="#main" title="Link to this heading"></a></h4>
+<p>main file is used to start the reinforcement learning framework server.
+You need to start the server if you want to use the framework</p>
+</section>
+<section id="endpoints">
+<h4>Endpoints<a class="headerlink" href="#endpoints" title="Link to this heading"></a></h4>
+<div class="line-block">
+<div class="line">We share multiple endpoints that allow to use reinforcement learning framework methods</div>
+<div class="line">To use them you need to use HTTP methods: GET, POST, PUT</div>
+</div>
+<p><strong>/logs</strong></p>
+<div class="line-block">
+<div class="line">GET - get logs from the server</div>
+</div>
+<p><strong>/run</strong></p>
+<div class="line-block">
+<div class="line">GET - get current runner state</div>
+<div class="line">POST - start/stop runner</div>
+</div>
+<p><strong>/model</strong></p>
+<div class="line-block">
+<div class="line">GET - return model in zip format</div>
+<div class="line">PUT - import model from the file</div>
+</div>
+<p><strong>/config</strong></p>
+<div class="line-block">
+<div class="line">GET - get current model configuration</div>
+<div class="line">PUT - update model configuration</div>
+<div class="line">POST - create new model configuration</div>
+</div>
+<p><strong>/config-params</strong></p>
+<div class="line-block">
+<div class="line">GET - get all model parameters (you can choose if you want modifiable parameters or all parameters)</div>
+</div>
+<p><strong>/game-history</strong></p>
+<div class="line-block">
+<div class="line">GET - return game history</div>
+</div>
+</section>
+<section id="runner">
+<h4>Runner<a class="headerlink" href="#runner" title="Link to this heading"></a></h4>
+<p>Runner class is an intermediary between algorithms module, API and Frontend</p>
+<section id="id3">
+<h5>Methods<a class="headerlink" href="#id3" title="Link to this heading"></a></h5>
+<p><strong>__init__</strong></p>
+<p>Initiate runner</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">algorithm_manager</span><span class="p">:</span> <span class="n">AlgorithmManager</span><span class="p">,</span> <span class="n">max_game_len</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s2">&quot;config.json&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: logger, algorithm manager, maximal amount of moves that the model can make in one iteration of the game, configuration file for connecting with API</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>_mount_socketio</strong></p>
+<p>Initiate connection to API</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_mount_socketio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>time</strong></p>
+<p>Get the running time of runner</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>run</strong></p>
+<p>Run the runner until end condition is met, user stops the process or the connection gets lost</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>start</strong></p>
+<p>Start the runner</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>stop</strong></p>
+<p>Stop the runner</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: None</div>
+</div>
+</section>
+</section>
+<section id="gameresults">
+<h4>GameResults<a class="headerlink" href="#gameresults" title="Link to this heading"></a></h4>
+<p>GameResults class stores model training/testing results</p>
+<section id="id4">
+<h5>Methods<a class="headerlink" href="#id4" title="Link to this heading"></a></h5>
+<p><strong>__init__</strong></p>
+<p>Initiate GameResults class. Set all statistics to 0</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>store_game_results</strong></p>
+<p>Store game results from one iteration</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">store_game_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">game_status</span><span class="p">,</span> <span class="n">is_end_game</span><span class="p">):</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: reward from the current game, game status (won, lost, ongoing), is game finished</div>
+<div class="line">Output: None</div>
+</div>
+<p><strong>__str__</strong></p>
+<p>Get train/test statistics as string</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: train/test statistics as string</div>
+</div>
+<p><strong>get_results</strong></p>
+<p>Get train/test statistics as dictionary</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Input: None</div>
+<div class="line">Output: train/test statistics as dictionary</div>
+</div>
+</section>
+</section>
+<section id="gamestate">
+<h4>GameState<a class="headerlink" href="#gamestate" title="Link to this heading"></a></h4>
+<p>Enum defining the current state of the game</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">auto</span>
+
+<span class="k">class</span> <span class="nc">GameStates</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">ONGOING</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">WON</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">LOST</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+</pre></div>
 </div>
 </section>
 </section>
