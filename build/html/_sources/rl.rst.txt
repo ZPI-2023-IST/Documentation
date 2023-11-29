@@ -318,10 +318,36 @@ Update configuration ::
 | Output: None
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+States
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Enum defining if the model is currently in train or test mode ::
+
+    from enum import Enum
+
+    class States(Enum):
+        TRAIN = "train"
+        TEST = "test"
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ParameterType
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Enum defining possible model parameter types. Currently it allows for parameters to have 4 types ::
+
+    from enum import Enum, auto
+
+    class ParameterType(Enum):
+        INT = auto()
+        FLOAT = auto()
+        BOOL = auto()
+        STRING = auto()
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
- Tuple subclass for defining model parameters::
+Tuple subclass for defining model parameters::
 
     from collections import namedtuple
 

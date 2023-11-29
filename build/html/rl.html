@@ -52,6 +52,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#modules">modules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#algorithmmanager">AlgorithmManager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#config">Config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#states">States</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parametertype">ParameterType</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#parameter">Parameter</a></li>
 </ul>
 </li>
@@ -388,10 +390,33 @@ It also handles all operations related to setting up algorithms.</p>
 </div>
 </section>
 </section>
+<section id="states">
+<h4>States<a class="headerlink" href="#states" title="Link to this heading"></a></h4>
+<p>Enum defining if the model is currently in train or test mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+<span class="k">class</span> <span class="nc">States</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">TRAIN</span> <span class="o">=</span> <span class="s2">&quot;train&quot;</span>
+    <span class="n">TEST</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="parametertype">
+<h4>ParameterType<a class="headerlink" href="#parametertype" title="Link to this heading"></a></h4>
+<p>Enum defining possible model parameter types. Currently it allows for parameters to have 4 types</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">auto</span>
+
+<span class="k">class</span> <span class="nc">ParameterType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">INT</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">FLOAT</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">BOOL</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">STRING</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
 <section id="parameter">
 <h4>Parameter<a class="headerlink" href="#parameter" title="Link to this heading"></a></h4>
-<blockquote>
-<div><p>Tuple subclass for defining model parameters:</p>
+<p>Tuple subclass for defining model parameters:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
 <span class="n">Parameter</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
@@ -399,7 +424,6 @@ It also handles all operations related to setting up algorithms.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
 <div class="line-block">
 <div class="line">type - type of the parameter (types defined in ParameterType in Config)</div>
 <div class="line">default - default value of the parameter. Set to None if parameter doesn’t have a default value</div>
