@@ -416,6 +416,10 @@ Endpoints
 
 | GET - return game history
 
+**/stats**
+
+| GET - return statistics about training/testing process
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Runner
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
