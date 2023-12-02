@@ -61,102 +61,80 @@ The structure of AbstractTranslator is the following::
         def get_config_model(self):
             pass
 
-==================================
+--------------------------------------
 Methods
-==================================
+--------------------------------------
 
----------------------------------
-__init__
----------------------------------
+**__init__**
 
 Initiate translator::
 
     def __init__(self, game=None):
-        self.game = game
 
 | Input: game that is processed by translator
 | Output: None
 
----------------------------------
-make_move
----------------------------------
+**make_move**
 
 Make move in the game::
 
     def make_move(self, move):
-        pass
 
 | Input: move made by the reinforcement learning model
 | Output: None
 
----------------------------------
-get_moves
----------------------------------
+**get_moves**
 
-Get moves from the game::
+Get all possible moves from the game::
 
     def get_moves(self):
-        pass
 
 | Input: None
-| Output: move representation needed by reinforcement learning model
+| Output: move representation needed by reinforcement learning model (we recommend that its the index vector e.g., indices of all possible moves)
 
----------------------------------
-get_board
----------------------------------
+**get_board**
 
 Get board from the game::
 
     def get_board(self):
-        pass
 
 | Input: None
-| Output: board representation needed by reinforcement learning model
+| Output: board representation needed by reinforcement learning model (note that in some cases you'll need to flatten the board before you pass it to the model)
 
----------------------------------
-get_state
----------------------------------
+**get_state**
 
-Get state from the game::
+Get state (which should be an enum) from the game::
 
     def get_state(self):
-        pass
 
 | Input: None
 | Output: state representation needed by reinforcement learning model
 
----------------------------------
-start_game
----------------------------------
+**start_game**
 
 Start the game::
 
     def start_game(self):
-        pass
 
 | Input: None
 | Output: None
 
----------------------------------
-get_reward
----------------------------------
+**get_reward**
 
 Calculate reward that will be later used by reinforcement learning models::
 
     def get_reward(self):
-        pass
 
 | Input: None
 | Output: reward for the reinforcement learning models
 
----------------------------------
-get_config_model
----------------------------------
+**get_config_model**
+
+| Function not obligatory to implement
 
 Get parameters that could be helpful when setting up the reinforcement learning model (e.g. input size, output size)::
 
     def get_config_model(self):
-        pass
 
 | Input: None
 | Output: useful parameters when setting up the reinforcement learning model

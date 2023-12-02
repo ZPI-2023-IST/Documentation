@@ -5,6 +5,7 @@ Welcome to ZPI's documentation!
 | Please see the links below to check how our project works
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 5
 
    translator
+   rl
