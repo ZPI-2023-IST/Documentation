@@ -160,13 +160,13 @@ translator is a way to make game compatible with reinforcement learning models.<
 <div class="line">Output: None</div>
 </div>
 <p><strong>get_moves</strong></p>
-<p>Get moves from the game:</p>
+<p>Get all possible moves from the game:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line">Input: None</div>
-<div class="line">Output: move representation needed by reinforcement learning model</div>
+<div class="line">Output: move representation needed by reinforcement learning model (we recommend that its the index vector e.g., indices of all possible moves)</div>
 </div>
 <p><strong>get_board</strong></p>
 <p>Get board from the game:</p>
@@ -175,10 +175,10 @@ translator is a way to make game compatible with reinforcement learning models.<
 </div>
 <div class="line-block">
 <div class="line">Input: None</div>
-<div class="line">Output: board representation needed by reinforcement learning model</div>
+<div class="line">Output: board representation needed by reinforcement learning model (note that in some cases you’ll need to flatten the board before you pass it to the model)</div>
 </div>
 <p><strong>get_state</strong></p>
-<p>Get state from the game:</p>
+<p>Get state (which should be an enum) from the game:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </pre></div>
 </div>
@@ -205,6 +205,9 @@ translator is a way to make game compatible with reinforcement learning models.<
 <div class="line">Output: reward for the reinforcement learning models</div>
 </div>
 <p><strong>get_config_model</strong></p>
+<div class="line-block">
+<div class="line">Function not obligatory to implement</div>
+</div>
 <p>Get parameters that could be helpful when setting up the reinforcement learning model (e.g. input size, output size):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_config_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </pre></div>

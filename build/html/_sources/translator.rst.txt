@@ -85,12 +85,12 @@ Make move in the game::
 
 **get_moves**
 
-Get moves from the game::
+Get all possible moves from the game::
 
     def get_moves(self):
 
 | Input: None
-| Output: move representation needed by reinforcement learning model
+| Output: move representation needed by reinforcement learning model (we recommend that its the index vector e.g., indices of all possible moves)
 
 **get_board**
 
@@ -99,11 +99,11 @@ Get board from the game::
     def get_board(self):
 
 | Input: None
-| Output: board representation needed by reinforcement learning model
+| Output: board representation needed by reinforcement learning model (note that in some cases you'll need to flatten the board before you pass it to the model)
 
 **get_state**
 
-Get state from the game::
+Get state (which should be an enum) from the game::
 
     def get_state(self):
 
@@ -129,6 +129,8 @@ Calculate reward that will be later used by reinforcement learning models::
 | Output: reward for the reinforcement learning models
 
 **get_config_model**
+
+| Function not obligatory to implement
 
 Get parameters that could be helpful when setting up the reinforcement learning model (e.g. input size, output size)::
 
