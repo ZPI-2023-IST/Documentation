@@ -35,6 +35,8 @@ To manually setup the whole framework you'll need to setup these modules:
 3. Frontend
 4. Visualisation (optional)
 
+After setting up all the modules you will be able to run the framework any time
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 API setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -114,3 +116,9 @@ After performing all the steps run **npm run dev** in the terminal. You should s
 
 | If you see an error please try again from the start. If that doesn't solve the issue please contact us.
 | NOTE - the module should be accessible from Frontend. On itself it won't run
+
+--------------------------------------
+Setup (Docker Compose)
+--------------------------------------
+
+To 
