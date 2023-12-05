@@ -121,4 +121,14 @@ After performing all the steps run **npm run dev** in the terminal. You should s
 Setup (Docker Compose)
 --------------------------------------
 
-To 
+| To make setup easier you can use Docker Compose
+| For that to be able to run you'll need to have every module configured to run as a Docker container
+| We've shared a script for Docker Compose setup
+| To setup the module in this way you need to perform the following steps:
+
+1. open terminal
+2. git clone https://github.com/ZPI-2023-IST/FreeCell-GUI
+3. cd FreeCell-GUI
+4. docker compose up
+
+TO DO
