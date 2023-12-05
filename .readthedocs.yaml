@@ -6,12 +6,12 @@
 version: 2
 
 sphinx:
-  configuration: docs/source/conf.py
+  configuration: ./source/conf.py
 
 formats: all
 
 # Optionally set the version of Python and requirements required to build your docs
 python:
-  version: 3.8
+  version: 3.10
   install:
     - requirements: ./requirements.txt
