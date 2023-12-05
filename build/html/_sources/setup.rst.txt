@@ -8,7 +8,7 @@ Prerequisites
 To run the program you need the following software installed:
 
 1. `git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git/>`_
-2. `Python3.10 <https://www.python.org/downloads/release/python-31011/>`_
+2. `Python 3.10 <https://www.python.org/downloads/release/python-31011/>`_
 3. `Node.js <https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/>`_
 4. `Docker Compose <https://docs.docker.com/compose/install/>`_ (optional)
 
@@ -81,7 +81,7 @@ If you see an error please try again from the start. If that doesn't solve the i
 Frontend setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To setup RL you'll need to perform the following steps:
+To setup Frontend you'll need to perform the following steps:
 
 1. open terminal
 2. git clone https://github.com/ZPI-2023-IST/Frontend
@@ -94,4 +94,23 @@ After performing all the steps run **npm run dev** in the terminal. You should s
    :width: 600
 
 | If you see an error please try again from the start. If that doesn't solve the issue please contact us.
-| NOTE - Frontend functionality is dependant on API and RL modules. If you don't have these modules running the Frontend may crash
+| NOTE - do not click on the link unless you have API and RL modules running
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Visualisation setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To setup Visualisation you'll need to perform the following steps:
+
+1. open terminal
+2. git clone https://github.com/ZPI-2023-IST/FreeCell-GUI
+3. cd FreeCell-GUI
+4. npm install
+
+After performing all the steps run **npm run dev** in the terminal. You should see the following screen
+
+.. image:: _static/visualisation_setup.png
+   :width: 600
+
+| If you see an error please try again from the start. If that doesn't solve the issue please contact us.
+| NOTE - the module should be accessible from Frontend. On itself it won't run
