@@ -8,7 +8,7 @@ Prerequisites
 To run the program you need the following software installed:
 
 1. `git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git/>`_
-2. `Python3.10 <https://www.python.org/downloads/release/python-31011/>`_
+2. `Python 3.10 <https://www.python.org/downloads/release/python-31011/>`_
 3. `Node.js <https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/>`_
 4. `Docker Compose <https://docs.docker.com/compose/install/>`_ (optional)
 
@@ -34,6 +34,8 @@ To manually setup the whole framework you'll need to setup these modules:
 2. RL
 3. Frontend
 4. Visualisation (optional)
+
+After setting up all the modules you will be able to run the framework any time
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 API setup
@@ -97,7 +99,7 @@ After performing all the steps run **npm run dev** in the terminal. You should s
 | NOTE - do not click on the link unless you have API and RL modules running
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Visualisation setup (TO DO)
+Visualisation setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To setup Visualisation you'll need to perform the following steps:
@@ -109,8 +111,14 @@ To setup Visualisation you'll need to perform the following steps:
 
 After performing all the steps run **npm run dev** in the terminal. You should see the following screen
 
-.. image:: _static/frontend_setup.png
+.. image:: _static/visualisation_setup.png
    :width: 600
 
 | If you see an error please try again from the start. If that doesn't solve the issue please contact us.
-| NOTE - do not click on the link unless you have API and RL modules running
+| NOTE - the module should be accessible from Frontend. On itself it won't run
+
+--------------------------------------
+Setup (Docker Compose)
+--------------------------------------
+
+To 

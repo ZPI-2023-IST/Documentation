@@ -51,6 +51,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#api-setup">API setup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rl-setup">RL setup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#frontend-setup">Frontend setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visualisation-setup">Visualisation setup</a></li>
 </ul>
 </li>
 </ul>
@@ -90,7 +91,7 @@
 <p>To run the program you need the following software installed:</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git/">git</a></p></li>
-<li><p><a class="reference external" href="https://www.python.org/downloads/release/python-31011/">Python3.10</a></p></li>
+<li><p><a class="reference external" href="https://www.python.org/downloads/release/python-31011/">Python 3.10</a></p></li>
 <li><p><a class="reference external" href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/">Node.js</a></p></li>
 <li><p><a class="reference external" href="https://docs.docker.com/compose/install/">Docker Compose</a> (optional)</p></li>
 </ol>
@@ -148,7 +149,7 @@
 </section>
 <section id="frontend-setup">
 <h4>Frontend setup<a class="headerlink" href="#frontend-setup" title="Link to this heading"></a></h4>
-<p>To setup RL you’ll need to perform the following steps:</p>
+<p>To setup Frontend you’ll need to perform the following steps:</p>
 <ol class="arabic simple">
 <li><p>open terminal</p></li>
 <li><p>git clone <a class="reference external" href="https://github.com/ZPI-2023-IST/Frontend">https://github.com/ZPI-2023-IST/Frontend</a></p></li>
@@ -159,7 +160,23 @@
 <a class="reference internal image-reference" href="_images/frontend_setup.png"><img alt="_images/frontend_setup.png" src="_images/frontend_setup.png" style="width: 600px;" /></a>
 <div class="line-block">
 <div class="line">If you see an error please try again from the start. If that doesn’t solve the issue please contact us.</div>
-<div class="line">NOTE - Frontend functionality is dependant on API and RL modules. If you don’t have these modules running the Frontend may crash</div>
+<div class="line">NOTE - do not click on the link unless you have API and RL modules running</div>
+</div>
+</section>
+<section id="visualisation-setup">
+<h4>Visualisation setup<a class="headerlink" href="#visualisation-setup" title="Link to this heading"></a></h4>
+<p>To setup Visualisation you’ll need to perform the following steps:</p>
+<ol class="arabic simple">
+<li><p>open terminal</p></li>
+<li><p>git clone <a class="reference external" href="https://github.com/ZPI-2023-IST/FreeCell-GUI">https://github.com/ZPI-2023-IST/FreeCell-GUI</a></p></li>
+<li><p>cd FreeCell-GUI</p></li>
+<li><p>npm install</p></li>
+</ol>
+<p>After performing all the steps run <strong>npm run dev</strong> in the terminal. You should see the following screen</p>
+<a class="reference internal image-reference" href="_images/visualisation_setup.png"><img alt="_images/visualisation_setup.png" src="_images/visualisation_setup.png" style="width: 600px;" /></a>
+<div class="line-block">
+<div class="line">If you see an error please try again from the start. If that doesn’t solve the issue please contact us.</div>
+<div class="line">NOTE - the module should be accessible from Frontend. On itself it won’t run</div>
 </div>
 </section>
 </section>
