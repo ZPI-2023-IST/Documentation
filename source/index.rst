@@ -11,3 +11,4 @@ Welcome to ZPI's documentation!
    rl
    visualization
    api
+   setup
