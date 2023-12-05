@@ -1,0 +1,17 @@
+# .readthedocs.yaml
+
+# Build documentation in the docs/ directory with Sphinx
+# Docs: https://www.sphinx-doc.org/en/master/usage/configuration.html
+
+version: 2
+
+sphinx:
+  configuration: docs/source/conf.py
+
+formats: all
+
+# Optionally set the version of Python and requirements required to build your docs
+python:
+  version: 3.8
+  install:
+    - requirements: ./requirements.txt
