@@ -13,6 +13,8 @@ This module shouldn't have a logic implementation of a game. It should only be u
 Endpoints
 ---------
 
+.. _post:
+
 ---------------------------------------
 1. Send data to visualization
 ---------------------------------------
@@ -81,7 +83,9 @@ Endpoints
           "data": "JSON_DATA",
         }
 
-    - **Description:** As a response GUI should send a url link which leads to visualization page. This link is connected to visual representation of a game - see **2. Show Visualization Endpoint** for more details.
+    - **Description:** As a response GUI should send a url link which leads to visualization page. This link is connected to visual representation of a game - see :ref:`visualization` for more details.
+
+.. _visualization:
 
 ---------------------------------------
 2. Visualization
@@ -89,7 +93,7 @@ Endpoints
    - **URL:** `/freecell`
    - **Method:** `GET`
    - **Response Format:** `HTML`
-   - **Description:** This url provides a visual representation of posted data, and should be sent as `url` parameter in a response to POST request to **1. Generate Visualization Endpoint**.
+   - **Description:** This url provides a visual representation of posted data, and should be sent as `url` parameter in a response to POST request to :ref:`post`.
    - **Customization:** This url can and should be modified for a specific game, this is only an example.
 
 
