@@ -13,7 +13,9 @@ This module shouldn't have a logic implementation of a game. It should only be u
 Endpoints
 ---------
 
-1. **Generate Visualization Endpoint**
+---------------------------------------
+1. Send data to visualization
+---------------------------------------
 
    - **URL:** `/api/visualization`
    - **Method:** `POST`
@@ -81,8 +83,9 @@ Endpoints
 
     - **Description:** As a response GUI should send a url link which leads to visualization page. This link is connected to visual representation of a game - see **2. Show Visualization Endpoint** for more details.
 
-2. **Show Visualization Endpoint**
-
+---------------------------------------
+2. Visualization
+---------------------------------------
    - **URL:** `/freecell`
    - **Method:** `GET`
    - **Response Format:** `HTML`
