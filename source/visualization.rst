@@ -79,14 +79,14 @@ Endpoints
           "data": "JSON_DATA",
         }
 
-    - **Description:** As a response GUI should send a url link which leads to visualization page.
+    - **Description:** As a response GUI should send a url link which leads to visualization page. This link is connected to visual representation of a game - see **2. Show Visualization Endpoint** for more details.
 
 2. **Show Visualization Endpoint**
 
    - **URL:** `/freecell`
    - **Method:** `GET`
    - **Response Format:** `HTML`
-   - **Description:** This url provides a visual representation of posted data.
+   - **Description:** This url provides a visual representation of posted data, and should be sent as `url` parameter in a response to POST request to **1. Generate Visualization Endpoint**.
    - **Customization:** This url can and should be modified for a specific game, this is only an example.
 
 
