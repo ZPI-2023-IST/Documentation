@@ -127,8 +127,14 @@ Setup (Docker Compose)
 | To setup the module in this way you need to perform the following steps:
 
 1. open terminal
-2. git clone https://github.com/ZPI-2023-IST/FreeCell-GUI
-3. cd FreeCell-GUI
-4. docker compose up
+2. git clone https://github.com/ZPI-2023-IST/Containers
+3. cd Containers
+4. git checkout Z2-85_docker_compose
+5. docker compose up
 
-TO DO
+After performing all the steps you should see the following screen
+
+.. image:: _static/docker_compose_setup.png
+   :width: 600
+
+If you see an error please try again from the start. If that doesn't solve the issue please contact us.
