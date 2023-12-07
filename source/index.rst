@@ -10,3 +10,4 @@ Welcome to ZPI's documentation!
    translator
    rl
    visualization
+   run
