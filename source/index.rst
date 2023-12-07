@@ -10,5 +10,6 @@ Welcome to ZPI's documentation!
    translator
    api
    rl
+   games
    visualization
    setup
