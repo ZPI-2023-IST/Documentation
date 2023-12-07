@@ -8,7 +8,7 @@ Welcome to ZPI's documentation!
    :maxdepth: 5
 
    translator
+   api
    rl
    visualization
-   api
    setup

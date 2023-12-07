@@ -20,7 +20,7 @@ Runner class (`runner.py`)
 
 The `runner.py` file contains the `Runner` class, responsible for managing implemented game and restarting game.
 
-The `Runner` class initializes a FreeCell game and a corresponding translator. The `reset` method is used to reset the game.
+The `Runner` class initializes a game and a corresponding translator. The `reset` method is used to reset the game.
 
 
 --------
@@ -33,7 +33,7 @@ Actions
 get_response
 ^^^^^^^^^^^^^
 The **get_response** function, is an asynchronous event handler, it returns the JSON with all the information about the game.
-This event is called as a response to :ref:`make_action` call.
+This event is called as a response to :ref:`make_move` call.
 
 Example of JSON response
 
@@ -46,10 +46,10 @@ Example of JSON response
             "state": "State.ONGOING"
         }
 
-.. _make_action:
+.. _make_move:
 
 ^^^^^^^^^^^^^
-make_action
+make_move
 ^^^^^^^^^^^^^
 The **make_move** function, is an asynchronous event handler, it processes move requests from the RL via WebSocket.
 It parses JSON data, executes game logic (reset or move), retrieves game information, prepares a response, and emits it to the client.
