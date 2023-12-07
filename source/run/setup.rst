@@ -53,7 +53,7 @@ To setup API you'll need to perform the following steps:
 
 After performing all the steps run **python main.py** in the terminal. You should see the following screen
 
-.. image:: _static/api_setup.png
+.. image:: ../_static/setup/run/api_setup.png
    :width: 600
 
 If you see an error please try again from the start. If that doesn't solve the issue please contact us.
@@ -74,7 +74,7 @@ NOTE - to run the rl module locally you'll need to change host (TO DO AFTER PATR
 
 After performing all the steps run **python rl/api/main.py** in the terminal. You should see the following screen
 
-.. image:: _static/rl_setup.png
+.. image:: ../_static/setup/run/rl_setup.png
    :width: 600
 
 If you see an error please try again from the start. If that doesn't solve the issue please contact us.
@@ -92,7 +92,7 @@ To setup Frontend you'll need to perform the following steps:
 
 After performing all the steps run **npm run dev** in the terminal. You should see the following screen
 
-.. image:: _static/frontend_setup.png
+.. image:: ../_static/setup/run/frontend_setup.png
    :width: 600
 
 | If you see an error please try again from the start. If that doesn't solve the issue please contact us.
@@ -111,7 +111,7 @@ To setup Visualisation you'll need to perform the following steps:
 
 After performing all the steps run **npm run dev** in the terminal. You should see the following screen
 
-.. image:: _static/visualisation_setup.png
+.. image:: ../_static/setup/run/visualisation_setup.png
    :width: 600
 
 | If you see an error please try again from the start. If that doesn't solve the issue please contact us.
@@ -134,7 +134,7 @@ Setup (Docker Compose)
 
 After performing all the steps you should see the following screen
 
-.. image:: _static/docker_compose_setup.png
+.. image:: ../_static/setup/run/docker_compose_setup.png
    :width: 600
 
 If you see an error please try again from the start. If that doesn't solve the issue please contact us.
