@@ -262,3 +262,79 @@ Let's take a look at the ``FreeCell`` class, the entry point of the game::
 """"""""""""""""""""""""""""""""""""""
 2048
 """"""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Among many files, our core functionality was split onto following files:
+    * ``board.py`` - contains ``Board`` class; represents game state and provides functionalities regarding performing moves and their validity checks
+    * ``game.py`` - contains ``Game`` abstract class and ``State`` enum class
+    * ``game2048.py`` - contains ``Game2048`` class and ``Direction`` enum class; game entry point, equipped only with methods required by the ``Game`` abstract class and an enum representing move directions
+    * ``node.py`` - contains a brief ``Node`` class; representation of a game tile 
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Game notation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| As described in ``Game`` abstract class, move in ``get_moves`` should be passed as a (preferably string) tuple.
+| How does this approach fare in case of 2048?
+| Considering the overall simplicity of the game the notation is (direction, ) where direction is:
+
+* ``'w'`` for a move up
+* ``'s'`` for a move down
+* ``'a'`` for a move left
+* ``'d'`` for a move right
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+game2048.py
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Consider games listed here only as an example and a brief guide on how to implement the necesities provided by ``Game``.
+The part of showcased code is the most vital part of 2048 in regards to entire project.
+The rest of the code is available in `our repository <https://github.com/ZPI-2023-IST/2048>`_.
+Let's take a look at the ``Game2048`` class, the entry point of the game::
+
+    from code2048.game import Game, State
+    from code2048.board import Board
+
+
+    class Game2048(Game):
+        def __init__(self, board: Board = None, rows: int = 4, cols: int = 4) -> None:
+            self.board = board if board else Board(rows, cols)
+
+        def get_moves(self) -> list:
+            """
+            Provides possible moves as a list of w/s/a/d characters meaning up/down/left/right respectively
+            """
+            return [key.value for key in self.board.possible_moves.keys()]
+
+        def make_move(self, move: tuple) -> bool:
+            """
+            Returns True if move succeeded, False otherwise.
+
+            Requires move in form of one element tuple, containing character mentioned above.
+
+            Example: make_move('w',) will perform an upwards move.
+            """
+
+            if move[0] in self.get_moves():
+                self.board.make_move(move[0])
+                return True
+            return False
+
+        def get_state(self) -> State:
+            """
+            Returns game state enum:  State.{ONGOING / WON / LOST}.
+            """
+            return self.board.game_status()
+
+        def get_board(self) -> list:
+            """
+            Returns current board state as a list of lists (rows).
+            """
+            return self.board.board
+
+        def start_game(self) -> None:
+            """
+            Overwrites current object, invoking constructor with default values and resetting every variable.
+            """
+            self.board = Board()
