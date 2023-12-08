@@ -27,7 +27,7 @@ Modules dependencies
     b. API module needs to pass proper data to RL module for Visualization module to work
 
 ================================================================
-In which order should you build your modules
+Optimal steps of building your own modules
 ================================================================
 
 | Let's assume that you want to train a model on your game.
