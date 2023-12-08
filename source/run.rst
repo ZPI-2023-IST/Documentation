@@ -8,3 +8,4 @@ How to run the framework
    :maxdepth: 2
 
    run/setup
+   run/run
