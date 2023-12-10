@@ -1,5 +1,5 @@
 Welcome to ZPI's documentation!
-================================
+===============================
 
 Our project is framework which allows to play various games using various models
 
