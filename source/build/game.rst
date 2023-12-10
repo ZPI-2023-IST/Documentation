@@ -1,109 +1,28 @@
-Game Documentation
-================================
+Build your own Game module
+============================
 
-================================
-Description
-================================
+===========================
+How to build the module
+===========================
 
-The environment for conducting reinforcement learning experiments is called a game.
-While it does not explicitly have to be a game, it should contain a certain set of functionalities mentioned later.
-The game module is considered a place for training and testing RL models.
+To build the module you'll need to inherit the Game abstract class :doc:`from the Game module documentation <../modules/game>` 
+and implement all of the methods
 
-================================
-Functionality
-================================
+======================================================
+How to test if the module was implemented correctly
+======================================================
 
-#. Contains built-in environment logic (e.g. rules of the game)
-#. Should provide functions and methods for interacting with the environment
+| Because Game module is not dependent on any other modules any implementation will be correct
+| Nonetheless we recommend that you verify the logic of your game and check if there aren't errors
+| Errors withing Game module are very hard to catch later on and can cause a lot of trouble
 
-================================
-Game module structure
-================================
-
-""""""""""""""""""""""""""""""""
-Prerequisites
-""""""""""""""""""""""""""""""""
-
-The game module should contain an abstract class called ``Game`` and an enum class ``State``.
-
-Example of Game and State in Python::
-
-    from enum import Enum
-    from abc import ABC, abstractmethod
-
-    class State(Enum):
-        ONGOING = 0
-        WON = 1
-        LOST = 2
-
-    class Game(ABC):
-        @abstractmethod
-        def get_moves(self) -> list:
-            pass
-
-        @abstractmethod
-        def make_move(self, move: tuple) -> bool:
-            pass
-
-        @abstractmethod
-        def get_state(self) -> State:
-            pass
-
-        @abstractmethod
-        def get_board(self) -> list:
-            pass
-
-        @abstractmethod
-        def start_game(self) -> None:
-            pass
-            
-""""""""""""""""""""""""""""""""""""""
-State enum class
-""""""""""""""""""""""""""""""""""""""
-
-State enum class provides a highly readable way of describing the state of the game.
-Using such a class is highly recommended as it makes it easy to tell whether model needs to undertake another game and to check its outcome.
+======================================================
+Game module example (Freecell)
+======================================================
 
 """"""""""""""""""""""""""""""""""""""
-Game functions and methods
-""""""""""""""""""""""""""""""""""""""
-
-**game_moves**
-
-| Input: None
-| Output: list of possible moves
-
-**make_move**
-
-| Input: move described as a tuple
-| Output: boolean value indicating whether the move was successful
-
-**get_state**
-
-| Input: None
-| Output: one of ``State`` values
-
-**get_board**
-
-| Input: None
-| Output: list representing the board
-
-**start_game**
-
-| Input: None
-| Output: None
-
-================================
-Game implementation examples
-================================
-
-""""""""""""""""""""""""""""""""""""""
-FreeCell
-""""""""""""""""""""""""""""""""""""""
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module structure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 
 Among many files, our core functionality was split onto following files:
     * ``Board.py`` - contains ``Board`` class; represents game state and provides functionalities regarding performing moves
@@ -113,9 +32,9 @@ Among many files, our core functionality was split onto following files:
     * ``Game.py`` - contains ``Game`` abstract class and ``State`` enum class
     * ``Move.py`` - contains ``Move`` enum class
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Game notation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 
 | As described in ``Game`` abstract class, move in ``get_moves`` should be passed as a (preferably string) tuple.
 | How does this approach fare in case of FreeCell?
@@ -131,9 +50,10 @@ Game notation
     - ``('AD', '2C')`` means moving the Ace of Diamonds to the 2 of Clubs
     - ``('AD', '0')`` means moving the Ace of Diamonds to an empty column
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 FreeCell.py
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
+
 Consider games listed here only as an example and a brief guide on how to implement the necesities provided by ``Game``.
 The part of showcased code is the most vital part of FreeCell in regards to entire project.
 The rest of the code is available in `our repository <https://github.com/ZPI-2023-IST/FreeCell>`_.
@@ -258,13 +178,13 @@ Let's take a look at the ``FreeCell`` class, the entry point of the game::
         def start_game(self) -> None:
             self.__init__()
 
+======================================================
+Game module example (2048)
+======================================================
 
 """"""""""""""""""""""""""""""""""""""
-2048
-""""""""""""""""""""""""""""""""""""""
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module structure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 
 Among many files, our core functionality was split onto following files:
     * ``board.py`` - contains ``Board`` class; represents game state and provides functionalities regarding performing moves and their validity checks
@@ -272,9 +192,9 @@ Among many files, our core functionality was split onto following files:
     * ``game2048.py`` - contains ``Game2048`` class and ``Direction`` enum class; game entry point, equipped only with methods required by the ``Game`` abstract class and an enum representing move directions
     * ``node.py`` - contains a brief ``Node`` class; representation of a game tile 
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Game notation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 
 | As described in ``Game`` abstract class, move in ``get_moves`` should be passed as a (preferably string) tuple.
 | How does this approach fare in case of 2048?
@@ -285,9 +205,10 @@ Game notation
 * ``'a'`` for a move left
 * ``'d'`` for a move right
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 game2048.py
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
+
 Consider games listed here only as an example and a brief guide on how to implement the necesities provided by ``Game``.
 The part of showcased code is the most vital part of 2048 in regards to entire project.
 The rest of the code is available in `our repository <https://github.com/ZPI-2023-IST/2048>`_.

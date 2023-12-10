@@ -8,3 +8,4 @@ How to build your own modules
    :maxdepth: 2
 
    build/what_to_know
+   build/game
