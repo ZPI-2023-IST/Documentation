@@ -5,7 +5,7 @@ Build your own Game module
 How to build the module
 ===========================
 
-To build the module you'll need to inherit the Game abstract class :doc:`from the Game module documentation <../modules/game>` 
+To build the module you'll need to inherit the Game class :doc:`from the Game module documentation <../modules/game>` 
 and implement all of the methods
 
 ======================================================
@@ -56,7 +56,7 @@ FreeCell.py
 
 Consider games listed here only as an example and a brief guide on how to implement the necesities provided by ``Game``.
 The part of showcased code is the most vital part of FreeCell in regards to entire project.
-The rest of the code is available in `our repository <https://github.com/ZPI-2023-IST/FreeCell>`_.
+The rest of the code is available in `our repository <https://github.com/ZPI-2023-IST/FreeCell>`__.
 Let's take a look at the ``FreeCell`` class, the entry point of the game::
 
     from game.Game import Game, State
