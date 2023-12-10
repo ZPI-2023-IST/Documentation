@@ -10,3 +10,5 @@ How to build your own modules
    build/what_to_know
    build/game
    build/translator
+   build/api
+   build/model
