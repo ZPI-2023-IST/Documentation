@@ -12,3 +12,4 @@ How to build your own modules
    build/translator
    build/api
    build/model
+   build/visualization

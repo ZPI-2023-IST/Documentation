@@ -11,9 +11,9 @@ You can build API module in any way you like. The only requirement is that the m
 How to test if the module was implemented correctly
 ======================================================
 
-| API module should be able to load Game and Translator module of your choice
-| It should be able to connect to RL module
-| `Postman is a good tool to verify if connection works <https://www.postman.com/>`__.
+#. API module should be able to load Game and Translator module of your choice
+#. It should be able to connect to RL module
+#. `Postman is a good tool to verify if connection works <https://www.postman.com/>`__.
 
 ======================================================
 Game module example (Freecell)
