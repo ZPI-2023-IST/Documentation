@@ -9,6 +9,13 @@ If you want are a new user we recommend that you look into tutorials on how to r
    :maxdepth: 1
 
    run
+
+If you want want to build your own modules look here:
+
+.. toctree::
+   :maxdepth: 1
+
+   build
    
 If you want to dive deep into the structure of all the modules see:
 

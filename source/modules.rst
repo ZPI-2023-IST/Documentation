@@ -7,7 +7,7 @@ Modules documentation
 .. toctree::
    :maxdepth: 2
 
-   modules/games
+   modules/game
    modules/translator
    modules/api
    modules/rl
