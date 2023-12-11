@@ -38,3 +38,21 @@ In which order should you build your modules
 #. Build your own API module
 #. Build your own model in RL module (optional)
 #. Build your own Visualization module (optional)
+
+================================================================
+Dockerising modules
+================================================================
+
+| After you've build all your modules you can dockerise them to speed up the process of starting the framework
+| You don't need to dockerise all of them as just these modules needs to be dockerized by you:
+
+#. API module
+#. Visualization module (optional)
+
+| After dockerising your modules you can build a YAML file for Docker Compose
+| This file needs to instantiate Docker containers for following modules:
+
+#. API module
+#. RL module
+#. Frontend module
+#. Visualization module (optional)
