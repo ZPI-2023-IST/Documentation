@@ -211,7 +211,6 @@ Visualization page
 End result
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 Our visualization is very simple. While it does not allow performing moves on a loaded game, users may move between the board states forwards and backwards, skip to the end, revert to the start or watch entire game unveil, using Play/Pause button.
-Additionally, the last move is indicated by grey cards - opaque one is the new slot of the moved card, while transparent indicates its previous position.
 To checkout entire repository, visit `our 2048 visualization repository <https://github.com/ZPI-2023-IST/2048-Vis>`_.
 
 .. image:: ../assets/images/2048_vis.png
