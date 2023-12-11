@@ -13,3 +13,4 @@ How to build your own modules
    build/api
    build/model
    build/visualization
+   build/docker
