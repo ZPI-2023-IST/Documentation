@@ -129,7 +129,7 @@ Setup (Docker Compose)
 1. open terminal
 2. git clone https://github.com/ZPI-2023-IST/Containers
 3. cd Containers
-4. git checkout Z2-85_docker_compose
+4. cd Freecell
 5. docker compose up
 
 After performing all the steps you should see the following screen
