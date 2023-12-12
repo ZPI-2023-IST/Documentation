@@ -61,8 +61,6 @@ The `createRunText` function dynamically generates text for the run button based
 
 The component renders a layout, including alerts, buttons for running, importing, and exporting models, and a modal for importing models.
 
-For more details, refer to the actual `index.js` code.
-
 ---------
 config.js
 ---------
@@ -91,32 +89,31 @@ The configuration page includes the following main functionalities:
 
 1. **Default Configuration Setup:**
 
-The page fetches default configuration options from the backend using the "/config-params" endpoint and sets up the initial state, including the selected algorithm and its corresponding configuration.
+    The page fetches default configuration options from the backend using the "/config-params" endpoint and sets up the initial state, including the selected algorithm and its corresponding configuration.
 
 2. **Current Configuration Display:**
 
-Users can trigger the display of the current configuration by clicking on the "Current config" button. This information is shown in a popover with details retrieved from the backend using the "/config" endpoint.
+    Users can trigger the display of the current configuration by clicking on the "Current config" button. This information is shown in a popover with details retrieved from the backend using the "/config" endpoint.
 
 3. **Algorithm Selection:**
 
-Users can select different algorithms from a dropdown list, triggering the dynamic loading of configuration options for the selected algorithm. The default algorithm is initially set to "example."
+    Users can select different algorithms from a dropdown list, triggering the dynamic loading of configuration options for the selected algorithm. The default algorithm is initially set to "example."
 
 4. **Configuration Modification:**
 
-Users can modify configuration parameters using input fields and checkboxes. The page dynamically generates form elements based on the data retrieved from the backend.
+    Users can modify configuration parameters using input fields and checkboxes. The page dynamically generates form elements based on the data retrieved from the backend.
 
 5. **Configuration Submission:**
 
-Users can submit the modified configuration either as a new configuration or to update an existing configuration. The submission triggers a modal confirmation dialog, warning users that updating the configuration will reset all weights of the current model.
+    Users can submit the modified configuration either as a new configuration or to update an existing configuration. The submission triggers a modal confirmation dialog, warning users that updating the configuration will reset all weights of the current model.
 
 6. **Alerts:**
 
-The page displays alerts for successful configuration updates and error messages in case of submission errors.
+    The page displays alerts for successful configuration updates and error messages in case of submission errors.
 
 7. **Tabs for New and Modified Configurations:**
 
-The page includes tabs for creating new configurations and modifying existing configurations. Users can switch between tabs to perform the desired action.
-For more details and the actual code implementation, refer to the provided configuration.js file.
+    The page includes tabs for creating new configurations and modifying existing configurations. Users can switch between tabs to perform the desired action.
 
 -------
 logs.js
@@ -136,61 +133,140 @@ The `Logs` component includes the following key features:
 
 1. **Log Filtering:**
 
-Users can filter logs based on their types (`CONFIG`, `TEST`, `TRAIN`) using buttons.
-Filter buttons for types include "Config," "Test," and "Train."
+    Users can filter logs based on their types (`CONFIG`, `TEST`, `TRAIN`) using buttons.
+    Filter buttons for types include "Config," "Test," and "Train."
 
 2. **Log Level Filtering:**
 
-Users can filter logs based on their levels (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `FATAL`) using buttons.
-Filter buttons for levels include "Debug," "Info," "Warning," "Error," and "Fatal."
+    Users can filter logs based on their levels (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `FATAL`) using buttons.
+    Filter buttons for levels include "Debug," "Info," "Warning," "Error," and "Fatal."
 
 3. **Displaying Log Table:**
 
-Logs are displayed in a table format, showing timestamp, type, level, and content.
-The content is clickable, triggering a toast notification and copying the log content to the clipboard.
+    Logs are displayed in a table format, showing timestamp, type, level, and content.
+    The content is clickable, triggering a toast notification and copying the log content to the clipboard.
 
 4. **Toast Notifications:**
 
-Toast notifications are used to inform users that log content has been copied to the clipboard.
+    Toast notifications are used to inform users that log content has been copied to the clipboard.
 
 5. **Fetching Logs:**
 
-The component fetches logs from the backend using the "/logs" endpoint.
-Logs are fetched asynchronously using the useEffect hook and displayed once fetched.
+    The component fetches logs from the backend using the "/logs" endpoint.
+    Logs are fetched asynchronously using the useEffect hook and displayed once fetched.
 
 6. **Log Styling:**
 
-Logs are displayed as Cards, with different background colors based on their levels (e.g., 'danger' for 'ERROR').
-The text color is adjusted for better readability.
+    Logs are displayed as Cards, with different background colors based on their levels (e.g., 'danger' for 'ERROR').
+    The text color is adjusted for better readability.
 
 7. **Clipboard Copy Functionality:**
 
-Clicking on log content triggers a function that copies the content to the clipboard.
-A toast notification confirms the successful copy.
+    Clicking on log content triggers a function that copies the content to the clipboard.
+    A toast notification confirms the successful copy.
 
 8. **Responsive Design:**
 
-The component is designed to be responsive, with a maximum height for the log display area and scroll functionality.
-
-For more details and the actual code implementation, refer to the provided `logs.js` file.
+    The component is designed to be responsive, with a maximum height for the log display area and scroll functionality.
 
 
 --------
 stats.js
 --------
 
+The Stats component in stats.js manages the display of statistical information related to the RL framework. It utilizes the Next.js framework, React.js library, Bootstrap for styling, and additional components such as Line, Bar, Container, Row, Col, Form, and Layout. The component communicates with the backend API hosted at "http://localhost" over a specified port obtained using the Port component, and the stats endpoint "/stats".
+
+The Stats component manages several state variables to facilitate dynamic interactions and updates on the statistics display page:
+
+- rewards: Holds the cumulative rewards data fetched from the backend.
+- wins: Holds the number of won games data fetched from the backend.
+- losses: Holds the number of lost games data fetched from the backend.
+- timeouts: Holds the number of timeouts data fetched from the backend.
+- smoothing: Represents the smoothing factor for the rewards line chart.
+- game: Represents the index of the selected game for display.
+- numGames: Holds the total number of games available.
+- allData: Holds all the data fetched for different games.
+
+The Stats component includes the following key features:
+
+1. **Game Selection:**
+
+    Users can select different games from a dropdown list, triggering the dynamic loading of statistical data for the selected game.
+
+2. **Line Chart for Rewards:**
+
+    The component displays a line chart showing cumulative rewards over episodes. Users can adjust the smoothing factor using a range input.
+
+3. **Bar Chart for Game Results:**
+
+    The component displays a bar chart showing the number of wins, losses, and timeouts for the selected game.
+
+4. **Fetching Stats:**
+
+    The component fetches statistical data from the backend using the "/stats" endpoint. Stats are fetched asynchronously using the useEffect hook and displayed once fetched.
+
+5. **Data Processing:**
+
+    Data fetched from the backend is processed to create suitable datasets for the Line and Bar charts. Moving average is applied to the rewards data for smoother visualization.
+
+6. **Responsive Design:**
+
+    The component is designed to be responsive, with charts and controls adjusting to different screen sizes.
+
 ------------
 visualize.js
 ------------
+
+
+The `Visualize` component in `visualize.js` handles the visualization of RL game history. It utilizes the Next.js framework, React.js library, Bootstrap for styling, and additional components such as ListGroup, Layout, Button, Table, and useState, useEffect hooks. The component communicates with the backend API hosted at "http://localhost" over a specified port obtained using the Port component, and the history endpoint "/game-history".
+
+The Visualize component manages state variables to facilitate dynamic interactions and updates on the visualization page:
+
+- `history`: Holds the game history data fetched from the backend.
+
+The `Visualize` component includes the following key features:
+
+1. **Fetching Game History:**
+
+   The component fetches game history data from the backend using the "/game-history" endpoint. The useEffect hook is used to trigger the fetch operation when the component mounts.
+
+2. **Visualization Button:**
+
+   For each game entry in the history, a "Visualize" button is provided. Clicking this button sends a POST request to the "/api/visualize" endpoint with the corresponding game data.
+
+3. **Handling Visualization:**
+
+   Upon receiving the visualization data from the backend, the component opens a new window to display the visualization. The visualization URL is constructed based on the received data.
+
+4. **Table Display:**
+
+   The game history is displayed in a table format, showing information such as the game index, timestamp, state, and a "Visualize" button.
+
+5. **Conditional Rendering:**
+
+   The component uses conditional rendering to display different content based on whether game history is available or not.
+
+6. **Responsive Design:**
+
+   The component is designed to be responsive, with the table adjusting to different screen sizes.
+
+For more details and the actual code implementation, refer to the provided `visualize.js` file.
+
 
 ---------
 navbar.js
 ---------
 
+The `navbar.js` file defines the navbar component, which is used to display the navigation bar on all pages of the frontend. It utilizes the Next.js framework, React.js library, Bootstrap for styling, and additional components such as Navbar, Nav, and Container.
+
 ---------
 layout.js
 ---------
 
+The `layout.js` file defines the layout component, which is used to display the header on all pages of the frontend. 
+
 -------
 port.js
 -------
+
+The `port.js` file defines the Port component, which is used to parse the port number for the backend API and visualization page.
