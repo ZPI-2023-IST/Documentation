@@ -16,6 +16,8 @@ Functionality
 #. Contains built-in environment logic (e.g. rules of the game)
 #. Should provide functions and methods for interacting with the environment
 
+.. _game:
+
 ================================
 Game module structure
 ================================
