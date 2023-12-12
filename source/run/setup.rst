@@ -70,7 +70,21 @@ To setup RL you'll need to perform the following steps:
 4. `create venv and activate it <https://docs.python.org/3.10/library/venv.html/>`_
 5. pip install -e .
 
-NOTE - to run the rl module locally you'll need to change host (TO DO AFTER PATRYK FINISHES)
+| Before your run the RL module check if the config.json file is set up properly
+
+This is the structure of config.json file ::
+
+   {
+    "game_address": "http://api",
+    "game_port": 5002
+   }
+
+Here is the list of parameters you can modify :
+
+#. game_address - if you run the RL module locally set it to *http://localhost*, otherwise leave it as *http://api*
+#. game_port - modify only if API module is set up on a different port
+
+NOTE - for this method of setup you need to change game_address to *http://localhost*
 
 After performing all the steps run **python rl/api/main.py** in the terminal. You should see the following screen
 
