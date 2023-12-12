@@ -5,7 +5,7 @@ Frontend Documentation
 Description
 =================
 
-Frontend provides user web interface for interacting with RL framework backend.
+Frontend provides user web interface for interacting with RL module backend.
 It is build using Next.js framework and React.js library. 
 
 =================
@@ -13,7 +13,7 @@ Functionality
 =================
 
 #. Provides interface for running and stopping RL experiments.
-#. Provides oncfirguration form, that allows to set up experiment parameters.
+#. Provides configuration form, that allows to set up train/test parameters.
 #. Provides interface for monitoring experiment progress.
 #. Provides site with list of experiments ran in test mode.
 #. Provides sites with logs, collected on backend.
@@ -25,10 +25,10 @@ Structure of the Frontend
 Project contains:
 
 1. Pages - content that is provided to user.
-    a. index.js - main page of the frontend. Allows for running, stopping experiments and dowlnoading/uploading models.
+    a. index.js - main page of the frontend. Allows for running, stopping experiments and downloading/uploading models.
     b. config.js - page with configuration form.
     c. logs.js - page with logs collected on backend.
-    d. stats.js - page with statistics , containg information about experiments.
+    d. stats.js - page with statistics, containg information about experiments.
     e. visualize.js - page with list of experiments ran in test mode.
 2. Components - reusable components that are used in pages.
     a. navbar.js - component that is used to display navigation bar.
@@ -97,7 +97,7 @@ The configuration page includes the following main functionalities:
 
 3. **Algorithm Selection:**
 
-    Users can select different algorithms from a dropdown list, triggering the dynamic loading of configuration options for the selected algorithm. The default algorithm is initially set to "example."
+    Users can select different algorithms from a dropdown list, triggering the dynamic loading of configuration options for the selected algorithm. The default algorithm is initially set to "example".
 
 4. **Configuration Modification:**
 
@@ -185,7 +185,7 @@ The Stats component manages several state variables to facilitate dynamic intera
 - smoothing: Represents the smoothing factor for the rewards line chart.
 - game: Represents the index of the selected game for display.
 - numGames: Holds the total number of games available.
-- allData: Holds all the data fetched for different games.
+- allData: Holds all the data fetched from different games.
 
 The Stats component includes the following key features:
 

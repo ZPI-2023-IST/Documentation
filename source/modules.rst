@@ -8,9 +8,9 @@ Modules documentation
    :maxdepth: 2
 
    modules/game
-   modules/frontend
    modules/translator
    modules/api
    modules/rl
+   modules/frontend
    modules/visualization
    
