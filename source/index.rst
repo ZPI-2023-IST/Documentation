@@ -1,7 +1,7 @@
-Welcome to the Reinforcement Learning Framework documentation!
-===============================================================
+Welcome to the Framework to Train and Test RL Models documentation!
+===============================================================================================
 
-We've implemented a framework which allows to play various games using various models
+Framework to Train and Test RL Models is a framework to train and test various reinforcement learning models on various games
 
 If you want to know about the framework look here:
 
