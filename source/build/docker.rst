@@ -76,7 +76,7 @@ Let's take a look at `Visualisation module <https://github.com/ZPI-2023-IST/Free
     # Command to run your Next.js app
     CMD ["npm", "run", "dev"]
 
-| If you are using Next.js than no modification is required in the script
+| If you are using Next.js and React.js than no modification is required in the script
 
 ================================================================
 YAML file for Docker Compose example (Freecell)
