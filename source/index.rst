@@ -1,9 +1,16 @@
-Welcome to ZPI's documentation!
-===============================
+Welcome to the Reinforcement Learning Framework documentation!
+===============================================================
 
-Our project is framework which allows to play various games using various models
+We've implemented a framework which allows to play various games using various models
 
-If you want are a new user we recommend that you look into tutorials on how to run the framework:
+If you want to know about the framework look here:
+
+.. toctree::
+   :maxdepth: 1
+
+   introduction
+
+If you are a new user we recommend that you look into tutorials on how to run the framework:
 
 .. toctree::
    :maxdepth: 1

@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'ZPI'
+project = 'Reinforcement Learning Framework'
 copyright = '2023, Wiktor Sadowy, Patryk Swiat, Mateusz Wozniak, Kamil Krawiec'
 author = 'Wiktor Sadowy, Patryk Swiat, Mateusz Wozniak, Kamil Krawiec'
 
