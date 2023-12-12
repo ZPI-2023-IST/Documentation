@@ -13,4 +13,9 @@ Modules documentation
    modules/rl
    modules/frontend
    modules/visualization
+
+.. toctree::
+   :maxdepth: 4
+
+   modules/tests
    

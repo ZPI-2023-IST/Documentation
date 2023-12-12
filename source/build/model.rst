@@ -5,8 +5,7 @@ Build your own model in RL module
 How to build the model
 ===========================
 
-To build the model you'll need to inherit the Algorithm class :doc:`from the RL module documentation <../modules/rl>` 
-and implement all of the methods
+To build the model you'll need to inherit the :ref:`Algorithm class from the RL module documentation <algorithm>` and implement all of the methods
 
 ======================================================
 How to test if the model was implemented correctly
@@ -24,4 +23,3 @@ Model example (DQN)
 | Because DQN implementation is long we recommend that you `the implementation on GitHub <https://github.com/ZPI-2023-IST/RL/blob/master/rl/algorithms/learning_algorithms.py>`__.
 | The model is based on `DQN tutorial made by PyTorch team <https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html>`__.
 | Our implementation of DQN penalizes illegal moves
-| To test our DQN we implemented tests `that are available here <https://github.com/ZPI-2023-IST/RL/blob/master/rl/tests/test_dqn.py>`__.

@@ -58,6 +58,8 @@ After performing all the steps run **python main.py** in the terminal. You shoul
 
 If you see an error please try again from the start. If that doesn't solve the issue please contact us.
 
+.. _rl_setup:
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 RL setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

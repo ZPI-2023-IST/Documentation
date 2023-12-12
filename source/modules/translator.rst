@@ -20,6 +20,8 @@ Functionality
 #. Calculate reward for reinforcement learning models
 #. Get translator parameters that could be useful when setting up reinforcement learning models
 
+.. _translator:
+
 ==================================
 Structure of the Translator
 ==================================

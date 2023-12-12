@@ -5,7 +5,7 @@ Build your own Game module
 How to build the module
 ===========================
 
-To build the module you'll need to inherit the Game class :doc:`from the Game module documentation <../modules/game>` 
+To build the module you'll need to inherit the :ref:`Game class from the Game module documentation <game>`
 and implement all of the methods
 
 ======================================================

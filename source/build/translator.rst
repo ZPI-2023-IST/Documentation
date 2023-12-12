@@ -5,7 +5,7 @@ Build your own Translator module
 How to build the module
 ===========================
 
-To build the module you'll need to inherit the AbstractTranslator class :doc:`from the Translator module documentation <../modules/translator>` 
+To build the module you'll need to inherit the :ref:`AbstractTranslator class from the Translator module documentation <translator>`
 and implement all of the methods
 
 ======================================================

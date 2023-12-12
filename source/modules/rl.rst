@@ -41,6 +41,8 @@ Algorithms Module consists of the following parts:
 #. ParameterType enum
 #. Parameter tuple subclass
 
+.. _algorithm:
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Algorithm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
