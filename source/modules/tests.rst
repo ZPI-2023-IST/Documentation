@@ -15,7 +15,184 @@ Game Module
 Freecell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-TO DO
+All the tests are located in the `FreeCell repository tests folder <https://github.com/ZPI-2023-IST/FreeCell/tree/master/game/tests>`_.
+
+**How to run tests**
+
+To run tests you'll need to:
+
+#. :ref:`Setup the game module <api_setup>`
+#. cd game
+#. python -m unittest 
+
+If you did not modify anything all tests should pass
+
+**Tests description**
+
+Our tests are spread across 4 files:
+
+#. test_Board.py - tests if the Board class works correctly
+#. test_Card.py - tests if the Card class works correctly
+#. test_Deck.py - tests if the Deck class works correctly
+#. test_Freecell.py - tests if the FreeCell class works correctly
+
+* **test_Board.py**
+
+    - **test_empty_cells_all_board_empty**
+
+        -  Goal - test if the empty_cells method works correctly when all cells are empty
+        -  Precondition - None
+        -  Excepted results - the method should return 4 (number of freecells) + 8 (number of columns) = 12
+
+    - **test_empty_cells_and_move_to_free_cell_real_moves**
+
+        -  Goal - test if the empty_cells method works correctly when there are real moves
+        -  Precondition - None
+        -  Excepted results - the method should return various numbers based of tested scenario
+
+    - **test_make_deck**
+
+        -  Goal - tests integrity of cards
+        -  Precondition - None
+        -  Excepted results - mocked cards should be arranged to predefined expected outcome
+
+    - **test_move_to_stack_only_aces**
+    
+        -  Goal - test if the move_to_stack method works correctly when there are only aces
+        -  Precondition - None
+        -  Excepted results - the test should tell if moving cards to respective suit stacks was successful
+
+    - **test_move_to_stack_aces_then_2_and_3**
+
+        -  Goal - extension of previous test, works with aces, 2s and 3s
+        -  Precondition - None
+        -  Excepted results - the test should tell if moving cards to respective suit stacks was successful
+
+    - **test_move_to_card_single_card_move**
+    
+        -  Goal - test if the move_to_card method works correctly when there is only one card to move
+        -  Precondition - None
+        -  Excepted results - the test should tell if moving cards onto other cards was successful
+
+    - **test_move_to_free_column**
+    
+        -  Goal - test if the move_to_free_column method works correctly
+        -  Precondition - None
+        -  Excepted results - the test should tell if moving cards to free columns was successful
+
+    - **test_move_card_from_free_cell_to_card**
+        
+        -  Goal - test if move_to_free_cell and move_to_card methods works correctly
+        -  Precondition - None
+        -  Excepted results - the test should tell if moving cards from free cells to columns was successful
+
+    - **test_move_card_from_free_cell_to_column**
+        
+        -  Goal - test if move_to_free_cell and move_to_free_column methods work correctly
+        -  Precondition - None
+        -  Excepted results - the test should tell if moving cards from free cells to free columns was successful
+
+* **test_Card.py**
+
+    - **test_is_smaller_and_different_color**
+
+        -  Goal - test if the is_smaller_and_different_color method works correctly when cards are different colors
+        -  Precondition - None
+        -  Excepted results - the test should pass if the card is smaller and different color
+
+    - **test_is_larger_and_same_suit**
+    
+        -  Goal - test if the is_larger_and_same_suit method works correctly when cards are the same suit
+        -  Precondition - None
+        -  Excepted results - the test should pass if the card is larger and same suit
+
+    - **test_eq**
+
+        -  Goal - test if the eq method works correctly
+        -  Precondition - None
+        -  Excepted results - the test should pass if the cards are equal
+
+    - **test_repr**
+
+        -  Goal - test if the repr method works correctly
+        -  Precondition - None
+        -  Excepted results - the test should pass if repr is equal to desired card representation
+
+    - **test_str**
+    
+        -  Goal - test if the str method works correctly
+        -  Precondition - None
+        -  Excepted results - the test should pass if str is equal to desired card representation
+
+* **test_Deck.py**
+
+    - **test_initialization_default**
+
+        -  Goal - test if the deck is initialized correctly with no seed passed
+        -  Precondition - None
+        -  Excepted results - the test should pass if the deck's seed is equal to 1
+
+    - **test_initialization_custom**
+
+        -  Goal - test if the deck is initialized correctly with custom seed
+        -  Precondition - None
+        -  Excepted results - the test should pass if the deck's seed is equal to passed seed
+
+    - **test_repr_str**
+
+        -  Goal - test if the repr and str outcomes are equal
+        -  Precondition - None
+        -  Excepted results - the test should pass if the repr and str outcomes are equal
+
+    - **test_cards_shuffled**
+    
+        -  Goal - test if the cards are shuffled
+        -  Precondition - None
+        -  Excepted results - the test should pass if the cards are shuffled (i.e. not equal to the previous order)
+
+    - **test_custom_seed**
+
+        -  Goal - test if the deck is initialized correctly with custom seed
+        -  Precondition - None
+        -  Excepted results - the test should pass if the deck's seed is equal to passed seed and if deck shuffles are consistent within the seed
+
+* **test_Freecell.py**
+
+    - **test_scenario_in_progress**
+
+        -  Goal - overall test of the game state for a given scenario
+        -  Precondition - None
+        -  Excepted results - the test should pass if the game state is *ONGOING* and the action sequence is successful
+
+    - **test_scenario_20_moves**
+    
+        -  Goal - overall test of the game performance after making 20 moves
+        -  Precondition - None
+        -  Excepted results - the test should pass if the move sequence is successful
+
+    - **test_scenario_empty_board**
+
+        -  Goal - assert variables for an empty board scenario
+        -  Precondition - None
+        -  Excepted results - the test should pass if variables have desired values
+
+    - **test_scenario_no_moves**
+    
+        -  Goal - assert variables for a scenario with no moves
+        -  Precondition - None
+        -  Excepted results - the test should pass if variables have desired values and game is in *LOST* state
+
+    - **test_scenario_free_column**
+
+        -  Goal - overall test of performing a move to free column
+        -  Precondition - None
+        -  Excepted results - the test should pass if variables have desired values after performing the move
+
+    - **test_scenario_stack_move**
+
+        -  Goal - overall test of performing moves to suit stacks
+        -  Precondition - None
+        -  Excepted results - the test should pass if variables have desired values after performing moves
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 2048
@@ -27,7 +204,7 @@ All the tests are located in the `2048 repository tests folder <https://github.c
 
 To run tests you'll need to:
 
-#. :ref:`Setup the RL module <rl_setup>`
+#. :ref:`Setup the game module <api_setup>`
 #. cd code2048
 #. python -m unittest 
 
@@ -85,10 +262,10 @@ Our tests are spread across 2 files:
         -  Excepted results - all tiles should slide as far up as possible
 
     - **test_move_down**    
-    
-            -  Goal - test if the move_down method works correctly
-            -  Precondition - None
-            -  Excepted results - all tiles should slide as far down as possible
+
+        -  Goal - test if the move_down method works correctly
+        -  Precondition - None
+        -  Excepted results - all tiles should slide as far down as possible
 
 * **test_node.py**
 
@@ -100,9 +277,9 @@ Our tests are spread across 2 files:
 
     - **test_double**
     
-            -  Goal - test if the double method works correctly
-            -  Precondition - None
-            -  Excepted results - the node should double its value
+        -  Goal - test if the double method works correctly
+        -  Precondition - None
+        -  Excepted results - the node should double its value
 
 --------------------------------------
 RL Module
