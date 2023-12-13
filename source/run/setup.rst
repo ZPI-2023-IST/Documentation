@@ -50,14 +50,12 @@ To setup API you'll need to perform the following steps:
 3. cd API
 4. `create venv and activate it <https://docs.python.org/3.10/library/venv.html/>`_
 5. pip install -r requirements.txt
-6. 
-   * pip install git+https://github.com/ZPI-2023-IST/FreeCell.git(installing FreeCell)
+6. pip install git+https://github.com/ZPI-2023-IST/FreeCell.git(installing FreeCell)
    or
-   * pip install git+https://github.com/ZPI-2023-IST/2048.git(installing 2048)
-7. 
-   * pip install git+https://github.com/ZPI-2023-IST/Translator.git (installing FreeCell translator)
+   pip install git+https://github.com/ZPI-2023-IST/2048.git(installing 2048)
+7. pip install git+https://github.com/ZPI-2023-IST/Translator.git (installing FreeCell translator)
    or
-   * pip install git+https://github.com/ZPI-2023-IST/Translator_2048.git (installing 2048 translator)
+   pip install git+https://github.com/ZPI-2023-IST/Translator_2048.git (installing 2048 translator)
 
 After performing all the steps run **python main.py** in the terminal. You should see the following screen
 
