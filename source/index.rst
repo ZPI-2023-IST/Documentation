@@ -1,7 +1,7 @@
-Welcome to the Framework to Train and Test RL Models documentation!
+Welcome to the AIGSF documentation!
 ===============================================================================================
 
-Framework to Train and Test RL Models is a framework to train and test various reinforcement learning models on various games
+AIGSF (AI Game Solver Framework) is a framework that allows its users to train and test reinforcement learning models on various games
 
 If you want to know about the framework look here:
 
