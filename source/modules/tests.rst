@@ -90,6 +90,20 @@ Our tests are spread across 2 files:
             -  Precondition - None
             -  Excepted results - all tiles should slide as far down as possible
 
+* **test_node.py**
+
+    - **test_create_node**
+
+        -  Goal - test if the constructor works correctly for various values
+        -  Precondition - None
+        -  Excepted results - nodes should be initialized only for positive integes
+
+    - **test_double**
+    
+            -  Goal - test if the double method works correctly
+            -  Precondition - None
+            -  Excepted results - the node should double its value
+
 --------------------------------------
 RL Module
 --------------------------------------
