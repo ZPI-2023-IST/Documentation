@@ -21,6 +21,74 @@ TO DO
 2048
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+All the tests are located in the `2048 repository tests folder <https://github.com/ZPI-2023-IST/2048/tree/master/code2048/tests>`_.
+
+**How to run tests**
+
+To run tests you'll need to:
+
+#. :ref:`Setup the RL module <rl_setup>`
+#. cd code2048
+#. python -m unittest 
+
+If you did not modify anything all tests should pass
+
+**Tests description**
+
+Our tests are spread across 2 files:
+
+#. test_board.py - tests if the Board class works correctly
+#. test_node.py - tests if the Node class works correctly
+
+* **test_board.py**
+
+    - **test_init**
+
+        -  Goal - test if the constructor works correctly for various parameters
+        -  Precondition - None
+        -  Excepted results - several boards should be initialized correctly
+
+    - **test_spawn**
+
+        -  Goal - test if the spawn method works correctly
+        -  Precondition - None
+        -  Excepted results - the board should spawn a new tile in a random empty cell, given there is at least one
+
+    - **test_possible_moves**
+
+        -  Goal - test if the possible_moves are saved properly
+        -  Precondition - None
+        -  Excepted results - variable possible_moves should contain up to 4 possible moves, depending on scenario
+
+    - **test_transpose**
+
+        -  Goal - test if the transpose method works correctly
+        -  Precondition - None
+        -  Excepted results - the board should be transposed correctly
+
+    - **test_move_right**
+
+        -  Goal - test if the move_right method works correctly
+        -  Precondition - None
+        -  Excepted results - all tiles should slide as far right as possible
+
+    - **test_move_left**
+
+        -  Goal - test if the move_left method works correctly
+        -  Precondition - None
+        -  Excepted results - all tiles should slide as far left as possible
+
+    - **test_move_up**
+
+        -  Goal - test if the move_up method works correctly
+        -  Precondition - None
+        -  Excepted results - all tiles should slide as far up as possible
+
+    - **test_move_down**    
+    
+            -  Goal - test if the move_down method works correctly
+            -  Precondition - None
+            -  Excepted results - all tiles should slide as far down as possible
 
 --------------------------------------
 RL Module
