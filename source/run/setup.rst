@@ -46,18 +46,20 @@ API setup
 To setup API you'll need to perform the following steps:
 
 1. open terminal
-2. git clone https://github.com/ZPI-2023-IST/API
-3. cd API
+2. ``git clone https://github.com/ZPI-2023-IST/API``
+3. ``cd API``
 4. `create venv and activate it <https://docs.python.org/3.10/library/venv.html/>`_
-5. pip install -r requirements.txt
-6. 
-   * pip install git+https://github.com/ZPI-2023-IST/FreeCell.git(installing FreeCell)
+5. ``pip install -r requirements.txt``
+6. ``pip install git+https://github.com/ZPI-2023-IST/FreeCell.git`` (installing FreeCell)
+
    or
-   * pip install git+https://github.com/ZPI-2023-IST/2048.git(installing 2048)
-7. 
-   * pip install git+https://github.com/ZPI-2023-IST/Translator.git (installing FreeCell translator)
+
+   ``pip install git+https://github.com/ZPI-2023-IST/2048.git`` (installing 2048)
+7. ``pip install git+https://github.com/ZPI-2023-IST/Translator.git`` (installing FreeCell translator)
+
    or
-   * pip install git+https://github.com/ZPI-2023-IST/Translator_2048.git (installing 2048 translator)
+
+   ``pip install git+https://github.com/ZPI-2023-IST/Translator_2048.git`` (installing 2048 translator)
 
 After performing all the steps run **python main.py** in the terminal. You should see the following screen
 
@@ -75,10 +77,10 @@ RL setup
 To setup RL you'll need to perform the following steps:
 
 1. open terminal
-2. git clone https://github.com/ZPI-2023-IST/RL
-3. cd RL
+2. ``git clone https://github.com/ZPI-2023-IST/RL``
+3. ``cd RL``
 4. `create venv and activate it <https://docs.python.org/3.10/library/venv.html/>`_
-5. pip install -e .
+5. ``pip install -e .``
 
 | Before your run the RL module check if the config.json file is set up properly
 
@@ -110,9 +112,9 @@ Frontend setup
 To setup Frontend you'll need to perform the following steps:
 
 1. open terminal
-2. git clone https://github.com/ZPI-2023-IST/Frontend
-3. cd Frontend
-4. npm install
+2. ``git clone https://github.com/ZPI-2023-IST/Frontend``
+3. ``cd Frontend``
+4. ``npm install``
 
 After performing all the steps run **npm run dev** in the terminal. You should see the following screen
 
@@ -129,9 +131,9 @@ Visualisation setup
 To setup Visualisation you'll need to perform the following steps:
 
 1. open terminal
-2. git clone https://github.com/ZPI-2023-IST/FreeCell-GUI
-3. cd FreeCell-GUI
-4. npm install
+2. ``git clone https://github.com/ZPI-2023-IST/FreeCell-GUI``
+3. ``cd FreeCell-GUI``
+4. ``npm install``
 
 After performing all the steps run **npm run dev** in the terminal. You should see the following screen
 
@@ -151,10 +153,10 @@ Setup (Docker Compose)
 | To setup the module in this way you need to perform the following steps:
 
 1. open terminal
-2. git clone https://github.com/ZPI-2023-IST/Containers
-3. cd Containers
-4. cd Freecell
-5. docker compose up
+2. ``git clone https://github.com/ZPI-2023-IST/Containers``
+3. ``cd Containers``
+4. ``cd Freecell``
+5. ``docker compose up``
 
 After performing all the steps you should see the following screen
 
