@@ -168,6 +168,15 @@ Update model configuration ::
 | Input: dictionary containing model configuration
 | Output: None
 
+**validate**
+
+Validate whether model parameters are set properly ::
+
+    def validate(data: dict) -> tuple(bool, string):
+
+| Input: dictionary containing model configuration
+| Output: tuple containg bool value indicating if parameters are set properly and error message (if parameters are set improperly)
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -141,6 +141,7 @@ Additionally, the last move is indicated by grey cards - opaque one is the new s
 To checkout entire repository, visit `our FreeCell visualization repository <https://github.com/ZPI-2023-IST/FreeCell-GUI>`_.
 
 .. image:: ../_static/modules/visualization/freecell_vis.png
+  :width: 600
 
 -------------------
 2048
@@ -214,3 +215,4 @@ Our visualization is very simple. While it does not allow performing moves on a 
 To checkout entire repository, visit `our 2048 visualization repository <https://github.com/ZPI-2023-IST/2048-Vis>`_.
 
 .. image:: ../_static/modules/visualization/2048_vis.png
+  :width: 600
