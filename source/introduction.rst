@@ -1,9 +1,9 @@
 What is the AI Game Solver Framework?
 ==========================================================================
 
-===============================
+================================
 Functionality of the framework
-===============================
+================================
 
 #. Train and test reinforcement learning model on a given game
 #. Import and export the configuration of currently used reinforcement learning model
@@ -79,3 +79,9 @@ Components of the framework
 
 .. image:: _static/introduction/component_diagram.jpg
     :width: 600
+
+===================================
+Summary
+===================================
+
+TO DO
