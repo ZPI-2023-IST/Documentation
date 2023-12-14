@@ -1,4 +1,4 @@
-Literature
+References
 ===========
 
 The literature is divided into each framework module

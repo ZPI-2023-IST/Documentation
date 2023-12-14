@@ -31,9 +31,9 @@ If you want to dive deep into the structure of all the modules see:
 
    modules
 
-If you are interested more in the topic that the framework is covering we recommend to look at the literature:
+If you are interested more in the topic that the framework is covering we recommend to look at the references:
 
 .. toctree::
    :maxdepth: 1
 
-   literature
+   references

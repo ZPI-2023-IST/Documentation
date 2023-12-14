@@ -37,6 +37,10 @@ On the main page you can:
 #. Import model from the zip file
 #. Export current model to the zip file
 
+NOTE - training reinforcement learning models is a very time consuming task. 
+We recommend to train models for at least several hours (in case of Freecell/2048 with default model parameters training took around 24 hours).
+Please be aware that training times may vary a lot. We recommend that you check logs and statistics sporadically to see how the model is performing.
+
 --------------------------------------
 Configuration
 --------------------------------------

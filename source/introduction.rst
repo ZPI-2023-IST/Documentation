@@ -1,9 +1,9 @@
 What is the AI Game Solver Framework?
 ==========================================================================
 
-===============================
+================================
 Functionality of the framework
-===============================
+================================
 
 #. Train and test reinforcement learning model on a given game
 #. Import and export the configuration of currently used reinforcement learning model
@@ -79,3 +79,30 @@ Components of the framework
 
 .. image:: _static/introduction/component_diagram.jpg
     :width: 600
+
+===================================
+Summary
+===================================
+
+There are multiple benefits of using the framework. These are:
+
+#. You can only concentrate on implementing the logic of the game because the training process is automated once you setup all the modules
+#. It's easy to build new modules and connect them to other modules, thus saving time during implementation
+#. You can easily monitor the training process by seeing how the model performs on the game
+#. You can easily compare various models by seeing each iteration of training and testing separately
+#. You can quickly visualize how the model performs on the game after you implement the Visualization module
+#. You can remotely control the training process (e.g., setup Frontend module on one computer and rest of the modules on a different computer)
+
+Unfortunetely the framework has its limitations. These are:
+
+#. Training will take a little bit longer due to the fact that API and RL modules will need to connect with each other
+#. Lack of possibiltiy to optimise training for the certain game. Every training needs to follow the same procedure
+#. Some algorithms will be very hard to implement in the framework (e.g. depth-first search)
+#. It can be difficult to test various modules (especially how they effect other modules)
+#. To use the framework you need to have some knowledge about programming and reinforcement learning models
+
+You can't have your cake and eat it. To make some things easier we had to sacrifice potential functionalities.
+
+The framework has a lot of room to improve. In the next updates we will add more tests to each of the modules and improve the existing functionalities.
+Our main priority is still trying to make the framework as general as possible and limit as much as possible the number of modules
+that the user needs to implement.
