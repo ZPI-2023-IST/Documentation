@@ -84,4 +84,8 @@ Components of the framework
 Summary
 ===================================
 
-TO DO
+The framework still has a lot of work to do. In the next updates we will
+
+The framework has many advantages
+
+Unfortunately
