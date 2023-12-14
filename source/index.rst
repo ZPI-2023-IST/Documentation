@@ -30,3 +30,10 @@ If you want to dive deep into the structure of all the modules see:
    :maxdepth: 1
 
    modules
+
+If you are interested more in the topic that the framework is covering we recommend to look at the literature:
+
+.. toctree::
+   :maxdepth: 1
+
+   literature
