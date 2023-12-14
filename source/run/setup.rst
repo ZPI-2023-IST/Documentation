@@ -43,23 +43,20 @@ After setting up all the modules you will be able to run the framework any time
 API setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To setup API you'll need to perform the following steps:
+To setup API you'll need to perform the following commands in your terminal:
 
-1. open terminal
-2. ``git clone https://github.com/ZPI-2023-IST/API``
-3. ``cd API``
-4. `create venv and activate it <https://docs.python.org/3.10/library/venv.html/>`_
-5. ``pip install -r requirements.txt``
-6. ``pip install git+https://github.com/ZPI-2023-IST/FreeCell.git`` (installing FreeCell)
+.. code-block:: bash
 
-   or
+   git clone https://github.com/ZPI-2023-IST/API
+   cd API
+   python3 -m venv venv
+   pip install -r requirements.txt
 
-   ``pip install git+https://github.com/ZPI-2023-IST/2048.git`` (installing 2048)
-7. ``pip install git+https://github.com/ZPI-2023-IST/Translator.git`` (installing FreeCell translator)
-
-   or
-
-   ``pip install git+https://github.com/ZPI-2023-IST/Translator_2048.git`` (installing 2048 translator)
+   # installing FreeCell and its translator
+   pip install git+https://github.com/ZPI-2023-IST/FreeCell.git git+https://github.com/ZPI-2023-IST/Translator.git
+   
+   # or installing 2048 and its translator
+   pip install git+https://github.com/ZPI-2023-IST/2048.git git+https://github.com/ZPI-2023-IST/Translator_2048.git
 
 After performing all the steps run **python main.py** in the terminal. You should see the following screen
 
@@ -74,13 +71,14 @@ If you see an error please try again from the start. If that doesn't solve the i
 RL setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To setup RL you'll need to perform the following steps:
+To setup RL you'll need to perform the following commands in your terminal:
 
-1. open terminal
-2. ``git clone https://github.com/ZPI-2023-IST/RL``
-3. ``cd RL``
-4. `create venv and activate it <https://docs.python.org/3.10/library/venv.html/>`_
-5. ``pip install -e .``
+.. code-block:: bash
+
+   git clone https://github.com/ZPI-2023-IST/RL
+   cd RL
+   python3 -m venv venv
+   pip install -e .
 
 | Before your run the RL module check if the config.json file is set up properly
 
@@ -109,14 +107,15 @@ If you see an error please try again from the start. If that doesn't solve the i
 Frontend setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To setup Frontend you'll need to perform the following steps:
+To setup Frontend you'll need to perform the following commands in your terminal:
 
-1. open terminal
-2. ``git clone https://github.com/ZPI-2023-IST/Frontend``
-3. ``cd Frontend``
-4. ``npm install``
+.. code-block:: bash
 
-After performing all the steps run **npm run dev** in the terminal. You should see the following screen
+   git clone https://github.com/ZPI-2023-IST/Frontend
+   cd Frontend
+   npm install
+
+After performing all the steps run ``npm run dev`` in the terminal. You should see the following screen
 
 .. image:: ../_static/run/setup/frontend_setup.png
    :width: 600
@@ -128,14 +127,15 @@ After performing all the steps run **npm run dev** in the terminal. You should s
 Visualisation setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To setup Visualisation you'll need to perform the following steps:
+To setup Visualisation you'll need to perform the following commands in your terminal:
 
-1. open terminal
-2. ``git clone https://github.com/ZPI-2023-IST/FreeCell-GUI``
-3. ``cd FreeCell-GUI``
-4. ``npm install``
+.. code-block:: bash
 
-After performing all the steps run **npm run dev** in the terminal. You should see the following screen
+   git clone https://github.com/ZPI-2023-IST/FreeCell-GUI
+   cd FreeCell-GUI
+   npm install
+
+After performing all the steps run ``npm run dev`` in the terminal. You should see the following screen
 
 .. image:: ../_static/run/setup/visualisation_setup.png
    :width: 600
@@ -150,13 +150,20 @@ Setup (Docker Compose)
 | To make setup easier you can use Docker Compose
 | For that to be able to run you'll need to have every module configured to run as a Docker container
 | We've shared a script for Docker Compose setup
-| To setup the module in this way you need to perform the following steps:
+| To setup the module in this way you need to perform the following commands in your terminal:
 
-1. open terminal
-2. ``git clone https://github.com/ZPI-2023-IST/Containers``
-3. ``cd Containers``
-4. ``cd Freecell``
-5. ``docker compose up``
+.. code-block:: bash
+
+   git clone https://github.com/ZPI-2023-IST/Containers
+   cd Containers
+
+   # for FreeCell
+   cd Freecell
+
+   # or for 2048
+   cd 2048
+   
+   docker compose up
 
 After performing all the steps you should see the following screen
 
