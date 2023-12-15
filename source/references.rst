@@ -1,7 +1,7 @@
 References
 ===========
 
-The literature is divided into each framework module
+The References are divided into each framework module
 
 ======================
 Game module
